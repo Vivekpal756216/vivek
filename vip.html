@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="style.css"> <!-- CSS connect -->
+</head>
+<body>
+
+  <h2> 1 MY PROFILE</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+name="vivek pal"
+profession="student"
+age=19
+course="BSC cs"
+print("------MY PROFILE------")
+print(f"HEYY, MY NAME IS {name}\n I AM A {profession} \n I AM {age} YEARS OLD AND I AM PURSUING {course}")
+</code>
+  </div>
+  <br>
+   <h2>2 SUM, SUBTRACTION, MULTIPLICATION, DIVISION, REMENDER, FLOOR DIVISION</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+a=float(input("enter the number of a :"))
+b=float(input("enter the number of b :"))
+print("sum of a and b :",a+b)
+print("subtraction  of a and b :",a-b)
+print("multiplication of a and b :",a*b)
+print("division of a and b :",a/b)
+print("remender of a and b :",a%b)
+print("Floor division of a and b :",a//b)
+</code>
+  </div>
+  <br>
+
+   <h2>3 WRITE A PROGRAM TO FIND AREA OF RECTANGLE, CIRCLE, SQUARE, Triangle</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+a=float(input("Enter the length :"))
+b=float(input("Enter the width :"))
+area=a*b
+print("Area of Rectangle = ",area)
+r=float(input("Enter the radius of Circle :"))
+area1=3.14*r*r
+print("Area of Circle = ",area1)
+s=float(input("Enter the side of square :"))
+area2=s*s
+print("Area of Square = ",area2)
+c=float(input("Enter the base of triangle :"))
+d=float(input("Enter the height of triangle :"))
+area3=0.5*c*d
+print("Area of Triangle = ",area3)
+</code>
+  </div>
+  <br>
+
+   <h2>4 WRITE A CODE FIND EVEN ODD NUMBER</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+num=float(input("enter any number :"))
+if num%2==0:
+    print("number is even")
+else:
+    print("number is odd")
+</code>
+  </div>
+<br>
+
+ <h2> 5 WRITE A CODE TO CALCULATE A GRADE, BASED ON A GIVEN SCORE </h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+m=int(input("Enter marks: "))
+if m>=90:
+    print("Grade = A")
+elif m>=75:
+    print("Grade = B")
+elif m>=60:
+    print("Grade = C")
+else:
+    print("Fail")
+    
+</code>
+  </div>
+  <br>
+  
+   <h2>6 A LIST OF FRUIT CREATED AND MODIFIDE USING VARIOUS LIST METHODS SUCH AS INDEXING, ASSIGNMENT, APPEND(), INSERT(), REMOVE(), AND POP()</h2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# accessing items
+fruit=["Apple","Banana","Cherry"]
+print(fruit)
+print(fruit[0])
+# modifying list
+fruit[1]="Blueberry"
+print(fruit)
+# adding elements
+fruit.append("Orange")
+print(fruit)
+fruit.insert(1,"Kiwi")
+print(fruit)
+# removing item
+fruit.remove("Cherry")
+print(fruit)
+last=fruit.pop()
+print(last)
+
+</code>
+  </div>
+  <br>
+
+  <H2>7 * PERFORM ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION AND REMENDER OF TWO INPUT NUMBER USING A FUNCTION</H2>
+  
+  <H2>.    * PERFORM ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION AND REMENDER OF TWO INPUT NUMBER USING A FUNCTION</H2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+add=arit(a=int(input("Enter number of A :")),
+         b=int(input("Enter number of B :")))
+print(add)
+
+
+def even_odd(n):
+    if n%2==0:
+        print("Even")
+    else:
+        print("Odd")
+num=int(input("Enter any number of A:"))
+print(even_odd(num))
+</code>
+  </div>
+  <br>
+
+  <H2>8 WRITE A PYTHON PROGRAM TO CREATE A DICTIONARY OF A STUDENT WITH DETAILS LIKE NAME, AGE, COURSE, AND  MARKS AND DISPLAY IT </H2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# create a dictionary
+student={
+    "name":"rahul",
+    "age":20,
+    "course":"BSC cs",
+    "marks":[85,90,78]
+}
+print(student)
+</code>
+  </div>
+  <br>
+
+  <H2>9 WRITE A PYTHON PROGRAM ADDITION, SUBTRACTION, ELEMENTS ACCESS, AND MATRIX MULTIPLICATION OF TWO 2*2 MATRICES USING NUMPY</H2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+import numpy as np
+a=np.array([[1,2],[2,3]])
+b=np.array([[2,3],[3,4]])
+print("sum",a+b)
+print("subtraction",a-b)
+print(a[0][1])
+print(np.dot(a,b))
+</code>
+  </div>
+  <br>
+
+  <H2>(A) WRITE A CODE TO CREATE A CLASS OF CARS AD ALSO OBJECT</H2>
+    <H2>(B) WRITE A CODE TO CREATE A CLASS OF CRICKETERS AND CREAT TO OBJECT</H2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# a
+class car:
+    def __init__(self, brand , model , color):
+        self.brand = brand
+        self.model = model
+        self.color = color
+    def __str__(self):
+        return f"{self.brand}{self.model}{self.color}"
+car1=car("honda " ,"city " ,"black ")
+print(car1)
+car2=car("tata ","nexon ","red ")
+print(car2)
+
+
+# b
+class cricketers:
+    def __init__(self,name,role,age):
+        self.name = name 
+        self.role=role
+        self.age=age
+    def introduce(self):
+        print(f"my name is {self.name} and i am a {self.role}")
+player1=cricketers("rohit","batsman",38)
+player2=cricketers("raj","batsman",98)
+
+player1.introduce()
+player2.introduce()
+
+</code>
+  </div>
+  
+
+  <script src="script.js"></script> <!-- JavaScript connect -->
+</body>
+</html>
