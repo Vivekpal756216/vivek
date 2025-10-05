@@ -1,3 +1,3 @@
-# vivekpal756216.github.io
+# vivekpal.github.io
 
 Vivek Pal
