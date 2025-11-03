@@ -39,25 +39,32 @@
       <!-- Login Form -->
         <!-- <form method="POST" action="https://vipw.xo.je/login.php" id="loginForm"> -->
 <!-- Login Form -->
+<!-- Login Form -->
 <form method="POST" action="https://vipw.xo.je/login.php" id="loginForm">
-  <input type="email" name="loginEmail" placeholder="Email" required>
-  <input type="password" name="loginPassword" placeholder="Password" required>
+  <input type="email" id="loginEmail" name="loginEmail" placeholder="Email" required>
+  <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required>
   <button type="submit">Login</button>
+  <p id="loginMsg"></p>
 </form>
 
-<form class="hidden" method="POST" action="https://vipw.xo.je/register.php" id="registerForm">
-  <input type="text" name="regName" placeholder="Full Name" required>
-  <input type="email" name="regEmail" placeholder="Email" required>
-  <input type="password" name="regPassword" placeholder="Password" required>
+<!-- Register Form -->
+<form method="POST" action="https://vipw.xo.je/register.php" id="registerForm" class="hidden">
+  <input type="text" id="regName" name="regName" placeholder="Full Name" required>
+  <input type="email" id="regEmail" name="regEmail" placeholder="Email" required>
+  <input type="password" id="regPassword" name="regPassword" placeholder="Password" required>
   <button type="submit">Register</button>
+  <p id="regMsg"></p>
 </form>
 
+<!-- Toggle Buttons -->
+<div class="toggle-buttons">
+  <button id="showLogin" class="active">Login</button>
+  <button id="showRegister">Register</button>
+</div>
 
-      <!-- Toggle Buttons BELOW the forms -->
-      <div class="toggle-buttons">
-        <button id="showLogin" class="active">Login</button>
-        <button id="showRegister">Register</button>
-      </div>
+
+
+   
     </div>
   </div>
 
@@ -69,51 +76,59 @@
 
 
 
-  <script>
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  const showLoginBtn = document.getElementById('showLogin');
-  const showRegisterBtn = document.getElementById('showRegister');
+ const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const showLoginBtn = document.getElementById('showLogin');
+const showRegisterBtn = document.getElementById('showRegister');
 
-  // Toggle forms
-  showLoginBtn.addEventListener('click', () => {
-    loginForm.classList.remove('hidden');
-    registerForm.classList.add('hidden');
-    showLoginBtn.classList.add('active');
-    showRegisterBtn.classList.remove('active');
+// Toggle forms
+showLoginBtn.addEventListener('click', () => {
+  loginForm.classList.remove('hidden');
+  registerForm.classList.add('hidden');
+  showLoginBtn.classList.add('active');
+  showRegisterBtn.classList.remove('active');
+});
+
+showRegisterBtn.addEventListener('click', () => {
+  loginForm.classList.add('hidden');
+  registerForm.classList.remove('hidden');
+  showRegisterBtn.classList.add('active');
+  showLoginBtn.classList.remove('active');
+});
+
+// Login submit → backend POST
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  const res = await fetch('https://vipw.xo.je/login.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `loginEmail=${encodeURIComponent(email)}&loginPassword=${encodeURIComponent(password)}`
   });
 
-  showRegisterBtn.addEventListener('click', () => {
-    loginForm.classList.add('hidden');
-    registerForm.classList.remove('hidden');
-    showRegisterBtn.classList.add('active');
-    showLoginBtn.classList.remove('active');
+  const text = await res.text();
+  document.getElementById('loginMsg').innerHTML = text;
+});
+
+// Register submit → backend POST
+registerForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('regName').value;
+  const email = document.getElementById('regEmail').value;
+  const password = document.getElementById('regPassword').value;
+
+  const res = await fetch('https://vipw.xo.je/register.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `regName=${encodeURIComponent(name)}&regEmail=${encodeURIComponent(email)}&regPassword=${encodeURIComponent(password)}`
   });
 
-  // Demo Login
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const pass = document.getElementById('loginPassword').value;
-    if(email === "test@test.com" && pass === "123456"){
-      document.getElementById('loginMsg').textContent = "Login successful!";
-      document.getElementById('loginMsg').style.color = "green";
-    } else {
-      document.getElementById('loginMsg').textContent = "Invalid credentials!";
-      document.getElementById('loginMsg').style.color = "red";
-    }
-  });
+  const text = await res.text();
+  document.getElementById('regMsg').innerHTML = text;
+});
 
-  // Demo Register
-  registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    document.getElementById('regMsg').textContent = "Registered successfully!";
-    document.getElementById('regMsg').style.color = "green";
-    document.getElementById('regName').value = '';
-    document.getElementById('regEmail').value = '';
-    document.getElementById('regPassword').value = '';
-  });
-</script>
 
 
 
