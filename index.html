@@ -40,23 +40,18 @@
         <!-- <form method="POST" action="https://vipw.xo.je/login.php" id="loginForm"> -->
 <!-- Login Form -->
 <form method="POST" action="https://vipw.xo.je/login.php" id="loginForm">
-  <h2>Login</h2>
-  <input type="email" id="loginEmail" name="loginEmail" placeholder="Email" required><br>
-  <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required><br>
+  <input type="email" name="loginEmail" placeholder="Email" required>
+  <input type="password" name="loginPassword" placeholder="Password" required>
   <button type="submit">Login</button>
-  <p id="loginMsg"></p>
 </form>
 
-
-<!-- Register Form -->
-<form method="POST" action="https://vipw.xo.je/register.php" id="registerForm" class="hidden">
-  <h2>Register</h2>
-  <input type="text" id="regName" name="regName" placeholder="Full Name" required><br>
-  <input type="email" id="regEmail" name="regEmail" placeholder="Email" required><br>
-  <input type="password" id="regPassword" name="regPassword" placeholder="Password" required><br>
+<form method="POST" action="https://vipw.xo.je/register.php" id="registerForm">
+  <input type="text" name="regName" placeholder="Full Name" required>
+  <input type="email" name="regEmail" placeholder="Email" required>
+  <input type="password" name="regPassword" placeholder="Password" required>
   <button type="submit">Register</button>
-  <p id="regMsg"></p>
 </form>
+
 
       <!-- Toggle Buttons BELOW the forms -->
       <div class="toggle-buttons">
