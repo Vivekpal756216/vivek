@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vivek</title>
     <link rel="stylesheet" href="myprofile.css" />
+    <link rel="stylesheet" href="test.css" />
     <!-- <style>
 
     </style> -->
@@ -25,69 +26,100 @@
       <a href="vip.html">
       <button>Notes</button></a>
     </div>
-    <!-- </main>
-    <form type="php.php">
-      <input type="text" placeholder="enter your name" /><br />
-      <label for="sectionid">
-        <input
-          type="radio"z
-          value="section a"
-          id="sectionid"
-        />section a
-      </label>
-
-      <br />
-      <label for="sectionida">
-        <input
-          type="radio"
-          value="section b"
-          name="section"
-          id="sectionida"
-        />section b
-      </label>
-
-      <br />
-      <label for="sectionidb">
-        <input
-          type="radio"
-          value="section c"
-          name="section"
-          id="sectionidb"
-        />section c
-      </label>
-      <br />
-    </form> -->
+    
     
 
     <div class="ph-wrapper">
       <img src="3.png" alt="Stylish Portrait" class="ph" />
       <div class="neon-ring"></div>
       <div class="We">
-        <h2><span class="highlight1"> Welcome to my portfolio!</span>
-     I am Vivek, a passionate 
-    <span class="highlight">CCNA</span>, 
-    <span class="highlight">CEH</span>, and 
-    <span class="highlight">OSCP</span> student, 
-    and an active <span class="highlight">Kali Linux</span> user. 
-    I’m deeply interested in networking, ethical hacking, and cybersecurity. 
-    This website showcases my learning journey, projects, and ideas as I continue 
-    to explore and build a strong career in the world of technology.
-     </h2>
+
+ <div class="raj center">
+    <div class="auth-panel">
+      <!-- Login Form -->
+        <form method="POST" action="https://vipw.xo.je/index.php?i=1"id="loginForm">
+
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required><br>
+        <input type="password" id="loginPassword" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+        <p id="loginMsg"></p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="hidden">
+        <h2>Register</h2>
+        <input type="text" id="regName" placeholder="Full Name" required><br>
+        <input type="email" id="regEmail" placeholder="Email" required><br>
+        <input type="password" id="regPassword" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+        <p id="regMsg"></p>
+      </form>
+
+      <!-- Toggle Buttons BELOW the forms -->
+      <div class="toggle-buttons">
+        <button id="showLogin" class="active">Login</button>
+        <button id="showRegister">Register</button>
+      </div>
+    </div>
+  </div>
+
+</div>
     </div>
     </div>
+    
 
 
-    <!-- <div class="We">
-        <h2>
-    Welcome to my portfolio! I am Vivek, a passionate 
-    <span class="highlight">CCNA</span>, 
-    <span class="highlight">CEH</span>, and 
-    <span class="highlight">OSCP</span> student, 
-    and an active <span class="highlight">Kali Linux</span> user. 
-    I’m deeply interested in networking, ethical hacking, and cybersecurity. 
-    This website showcases my learning journey, projects, and ideas as I continue 
-    to explore and build a strong career in the world of technology.
-     </h2>
-    </div> -->
+
+
+  <script>
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const showLoginBtn = document.getElementById('showLogin');
+  const showRegisterBtn = document.getElementById('showRegister');
+
+  // Toggle forms
+  showLoginBtn.addEventListener('click', () => {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+    showLoginBtn.classList.add('active');
+    showRegisterBtn.classList.remove('active');
+  });
+
+  showRegisterBtn.addEventListener('click', () => {
+    loginForm.classList.add('hidden');
+    registerForm.classList.remove('hidden');
+    showRegisterBtn.classList.add('active');
+    showLoginBtn.classList.remove('active');
+  });
+
+  // Demo Login
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pass = document.getElementById('loginPassword').value;
+    if(email === "test@test.com" && pass === "123456"){
+      document.getElementById('loginMsg').textContent = "Login successful!";
+      document.getElementById('loginMsg').style.color = "green";
+    } else {
+      document.getElementById('loginMsg').textContent = "Invalid credentials!";
+      document.getElementById('loginMsg').style.color = "red";
+    }
+  });
+
+  // Demo Register
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('regMsg').textContent = "Registered successfully!";
+    document.getElementById('regMsg').style.color = "green";
+    document.getElementById('regName').value = '';
+    document.getElementById('regEmail').value = '';
+    document.getElementById('regPassword').value = '';
+  });
+</script>
+
+
+
+    
   </body>
 </html>
