@@ -11,20 +11,46 @@
   <div class="code-container" >
     <button class="copy-btn" onclick="copyCode()">Copy</button>
 <code>
-a=float(input("Enter the length :"))
-b=float(input("Enter the width :"))
-area=a*b
-print("Area of Rectangle = ",area)
-r=float(input("Enter the radius of Circle :"))
-area1=3.14*r*r
-print("Area of Circle = ",area1)
-s=float(input("Enter the side of square :"))
-area2=s*s
-print("Area of Square = ",area2)
-c=float(input("Enter the base of triangle :"))
-d=float(input("Enter the height of triangle :"))
-area3=0.5*c*d
-print("Area of Triangle = ",area3)
+class bank:
+    def __init__(self, customerid, name, amount=0):
+        self.id = customerid
+        self.name = name
+        self.a= amount
+
+    def display(self):
+        print("customer id is:", self.id)
+        print("account holder name:", self.name)
+
+    def choice(self):
+        print("\nSelect '1' for Cash deposit")
+        print("Select '2' for Cash withdrawal\n")
+        print("Select '3' to check balance\n")
+
+        a=float(input("Enter Choice: "))
+
+        match a:
+            case 1:
+                d=float(input("enter amount to be deposited: "))
+                self.a+=d
+                print("amount deposited Successfully!")
+
+            case 2:
+                w=float(input("enter amount to be withdrawn: "))
+                if w<=self.a:
+                    self.a-=w
+                    print("amount withdrawn Successfully!")
+                else:
+                    print("insufficient funds in bank account")
+
+            case 3:
+                print("Balance Amount in Account:", self.a)
+
+            case _:
+                print("Invalid Choice")
+                
+b = bank("9930907779","vivek pal")  
+b.display()
+b.choice()
 </code>
   </div>
   <br>
