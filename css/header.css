@@ -1,0 +1,25 @@
+.headm {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  text-align: center;
+  z-index: 9999;
+  padding: 10px 0;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+}
+
+.headm .h1 {
+  font-size: 48px;
+  color: aqua;
+}
+
+.headm .pt {
+  font-size: 20px;
+  color: red;
+}
+
+.headm .op {
+  font-size: 18px;
+  color: bisque;
+}

@@ -1,0 +1,216 @@
+.site-footer {
+  background: black;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 -2px 20px rgb(253, 5, 5);
+}
+
+.site-footer h2 {
+  color: aqua;
+}
+
+.site-footer p {
+  color: #ccc;
+}
+
+.footer-social a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 18px;
+  color: white;
+  border: 1px solid aqua;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  background: aqua;
+  color: black;
+  box-shadow: 0 0 15px aqua;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+
+/* bio hai ye  */
+
+
+.container {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+  min-height: 1px;
+}
+
+
+.card {
+  width: 260px;
+  height: 310px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--gradient-color),
+    transparent
+  );
+
+  animation: rotate 3s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: transparent;
+  border-radius: 17px;
+  z-index: -1;
+}
+.card:hover{
+  background-color: #fdf497;
+}
+
+/* Instagram Gradient */
+.instagram {
+  --gradient-color: #E4405F;
+}
+
+.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+
+/* GitHub Gradient */
+.github {
+  --gradient-color: #24292e;
+}
+
+.github:hover {
+   background: radial-gradient(circle at 30% 107%,#285AEB 0%,#d6249f 5%, #fd5949 45%,#fdf49f 60%,#fdf497 90%);
+}
+
+/* LinkedIn Gradient */
+.linkedin {
+  --gradient-color: #0A66C2;
+}
+
+.linkedin:hover {
+  background: radial-gradient(circle at 30% 107%, #d6249f 0%,#fdf49f 5%, #285AEB 45%, #fd5949 60%, #fdf497 90%);
+}
+
+.whatsapp{
+    --gradient-color: #3e85cc ;
+}
+.whatsapp:hover{
+background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+
+.card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  z-index: 2;
+}
+
+
+.card i{
+ font-size: 75px;
+}
+
+.card p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.card button {
+  padding: 10px 25px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.card:hover button {
+  background: black;
+  color: white;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* More Liquid Effect */
+.card {
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+  background-size: 300% 300%;
+  background-position: 100% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.card:hover {
+  background-position: 0% 0%;
+  animation: liquidFlow 2s infinite linear;
+}
+
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
