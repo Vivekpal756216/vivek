@@ -31,16 +31,16 @@
 .positon {
   position: absolute;
   top: 50%;
-  right: -1000px;
+ 
+  right:250px;
   transform: translateY(-50%);
-  width: 900px;
+  width: 700px;
 }
 
 .highlight{
   color: cyan;
   font-weight: bold;
 }
-
 .highlight1 {
   color: red;
   text-shadow: 0 0 10px cyan;
@@ -51,9 +51,9 @@
 
 
 /* dgnjxbu */
-.introductio_vivek {
-margin-left: 200px;
-margin-right:1% ;
+.introduction_vivek {
+  margin-left:0%;
+  margin-right:0% ;
   max-width: 700px;
   padding: 30px;
   background: rgba(255,255,255,0.05);
@@ -62,7 +62,7 @@ margin-right:1% ;
   box-shadow: 0 0 30px rgba(0,255,255,0.15);
 }
 
-.introductio_vivek h2 {
+.introduction_vivek h2 {
   font-size: 48px;
   margin-bottom: 40px;
 }
@@ -96,3 +96,10 @@ margin-right:1% ;
   background: rgb(255, 196, 0);
   color: rgb(211, 20, 20);
 }
+
+
+
+
+/* footer ke liye all social accounts  */
+
+

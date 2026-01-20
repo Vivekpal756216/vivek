@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
   <title>Vivek</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -47,21 +51,43 @@
    <a href="HTMLFILE/about.html" target="_blank"> <button>About</button></a>
    <a href="HTMLFILE/project.html" target="_blank"><button>Projects</button></a>
    <a href="HTMLFILE/resume.html" target="_blank"><button>Resume</button></a>
-
    <a href="https://wa.me/919930907779" target="_blank"><button>Service</button></a>
-
    <a href="https://wa.me/919930907779" target="_blank"><button>EVE-NG</button></a>
-
   </nav>
+ <!-- Toggle -->
+<div class="mobile-wrap">
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <div class="mobile-menu">
+    <a href="HTMLFILE/home.html" target="_blank">Home</a>
+   <a href="HTMLFILE/about.html" target="_blank">About</a>
+   <a href="HTMLFILE/project.html" target="_blank">Projects</a>
+   <a href="HTMLFILE/resume.html" target="_blank">Resume</a>
+   <a href="https://wa.me/919930907779" target="_blank">Service</a>
+   <a href="https://wa.me/919930907779" target="_blank">EVE-NG</a>
+    </div>
+  </div>
+
+</label>
+
+
+
 </header>
 
 <!--  PROFILE SECTION -->
 <section class="sectiont">
-  <img src="img/3.png"class="ph">
   <div class="photoside-ring"></div>
+  <img src="img/3.png"class="ph">
+</section>  
 
 <div class="positon">
-    <div class="introductio_vivek">
+    <div class="introduction_vivek">
         <h2>Hi, I'm <span class="highlight">Vivek Pal</span></h2>
 
         <p class="contet_paragraph">
@@ -80,7 +106,7 @@
        </div>
     </div>
 </div>
-</section>
+
 
 <!-- FOOTER (ALAG)  -->
 <footer class="site-footer">
@@ -117,6 +143,31 @@
     <p>💬 Let’s Chat</p>
     <a href="https://wa.me/919930907779" target="_blank"><button>Connect</button></a>
   </div>
+
+<!-- Mobile-only social icons -->
+<div class="phonecard">
+  <a href="https://www.instagram.com/vivek_pal_756216?igsh=MXZjMmlwb281dXM5cA==" target="_blank" class="instagram">
+    <i class="fab fa-instagram"></i>
+    <span>Instagram</span>
+  </a>
+  <a href="https://github.com/Vivekpal756216/" target="_blank" class="github">
+    <i class="fab fa-github"></i>
+    <span>GitHub</span>
+  </a>
+  <a href="https://www.linkedin.com/in/vivekpal756216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin">
+    <i class="fab fa-linkedin"></i>
+    <span>LinkedIn</span>
+  </a>
+  <a href="https://wa.me/919930907779" target="_blank" class="whatsapp">
+    <i class="fab fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+
+
+
+
 <!-- 
   <div class="">
   
@@ -125,6 +176,7 @@
     <button>Connect</button>
   </div> -->
 </div>
+
 
     <div class="footer-bottom">
       © 2025 Vivek Pal | All Rights Reserved 

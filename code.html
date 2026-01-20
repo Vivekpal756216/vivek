@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="style.css"> <!-- CSS connect -->
+</head>
+<body>
+   <h2>3 WRITE A PROGRAM TO FIND AREA OF RECTANGLE, CIRCLE, SQUARE, Triangle</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+class bank:
+    def __init__(self, customerid, name, amount=0):
+        self.id = customerid
+        self.name = name
+        self.a= amount
+
+    def display(self):
+        print("customer id is:", self.id)
+        print("account holder name:", self.name)
+
+    def choice(self):
+        print("\nSelect '1' for Cash deposit")
+        print("Select '2' for Cash withdrawal\n")
+        print("Select '3' to check balance\n")
+
+        a=float(input("Enter Choice: "))
+
+        match a:
+            case 1:
+                d=float(input("enter amount to be deposited: "))
+                self.a+=d
+                print("amount deposited Successfully!")
+
+            case 2:
+                w=float(input("enter amount to be withdrawn: "))
+                if w<=self.a:
+                    self.a-=w
+                    print("amount withdrawn Successfully!")
+                else:
+                    print("insufficient funds in bank account")
+
+            case 3:
+                print("Balance Amount in Account:", self.a)
+
+            case _:
+                print("Invalid Choice")
+                
+b = bank("9930907779","vivek pal")  
+b.display()
+b.choice()
+</code>
+  </div>
+  <br>
+
+   <h2>4 WRITE A CODE FIND EVEN ODD NUMBER</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+num=float(input("enter any number :"))
+if num%2==0:
+    print("number is even")
+else:
+    print("number is odd")
+</code>
+  </div>
+<br>
+
+ <h2> 5 WRITE A CODE TO CALCULATE A GRADE, BASED ON A GIVEN SCORE </h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+m=int(input("Enter marks: "))
+if m>=90:
+    print("Grade = A")
+elif m>=75:
+    print("Grade = B")
+elif m>=60:
+    print("Grade = C")
+else:
+    print("Fail")
+    
+</code>
+  </div>
+  <br>
+  
+   <h2>6 A LIST OF FRUIT CREATED AND MODIFIDE USING VARIOUS LIST METHODS SUCH AS INDEXING, ASSIGNMENT, APPEND(), INSERT(), REMOVE(), AND POP()</h2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# accessing items
+fruit=["Apple","Banana","Cherry"]
+print(fruit)
+print(fruit[0])
+# modifying list
+fruit[1]="Blueberry"
+print(fruit)
+# adding elements
+fruit.append("Orange")
+print(fruit)
+fruit.insert(1,"Kiwi")
+print(fruit)
+# removing item
+fruit.remove("Cherry")
+print(fruit)
+last=fruit.pop()
+print(last)
+
+</code>
+  </div>
+  <br>
+
+  <H2>7 * PERFORM ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION AND REMENDER OF TWO INPUT NUMBER USING A FUNCTION</H2>
+  
+  <H2>.    * PERFORM ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION AND REMENDER OF TWO INPUT NUMBER USING A FUNCTION</H2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+def arit(a,b):
+    print("Sum of A and B",a+b)
+    print("Subtraction  of A and B",a-b)
+    print("Multiplication of A and B",a*b)
+    print("Divison of A and B",a/b)
+    print("Remainder of A and B",a%b)
+add=arit(a=int(input("Enter number of A :")),
+         b=int(input("Enter number of B :")))
+print(add)
+
+
+def even_odd(n):
+    if n%2==0:
+        print("Even")
+    else:
+        print("Odd")
+num=int(input("Enter any number of A:"))
+print(even_odd(num))
+</code>
+  </div>
+  <br>
+
+  <H2>8 WRITE A PYTHON PROGRAM TO CREATE A DICTIONARY OF A STUDENT WITH DETAILS LIKE NAME, AGE, COURSE, AND  MARKS AND DISPLAY IT </H2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# create a dictionary
+student={
+    "name":"rahul",
+    "age":20,
+    "course":"BSC cs",
+    "marks":[85,90,78]
+}
+print(student)
+</code>
+  </div>
+  <br>
+
+  <H2>9 WRITE A PYTHON PROGRAM ADDITION, SUBTRACTION, ELEMENTS ACCESS, AND MATRIX MULTIPLICATION OF TWO 2*2 MATRICES USING NUMPY</H2>
+  <div class="code-container">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+import numpy as np
+a=np.array([[1,2],[2,3]])
+b=np.array([[2,3],[3,4]])
+print("sum",a+b)
+print("subtraction",a-b)
+print(a[0][1])
+print(np.dot(a,b))
+</code>
+  </div>
+  <br>
+
+  <H2>(A) WRITE A CODE TO CREATE A CLASS OF CARS AD ALSO OBJECT</H2>
+    <H2>(B) WRITE A CODE TO CREATE A CLASS OF CRICKETERS AND CREAT TO OBJECT</H2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+# a
+class car:
+    def __init__(self, brand , model , color):
+        self.brand = brand
+        self.model = model
+        self.color = color
+    def __str__(self):
+        return f"{self.brand}{self.model}{self.color}"
+car1=car("honda " ,"city " ,"black ")
+print(car1)
+car2=car("tata ","nexon ","red ")
+print(car2)
+
+
+# b
+class cricketers:
+    def __init__(self,name,role,age):
+        self.name = name 
+        self.role=role
+        self.age=age
+    def introduce(self):
+        print(f"my name is {self.name} and i am a {self.role}")
+player1=cricketers("rohit","batsman",38)
+player2=cricketers("raj","batsman",98)
+
+player1.introduce()
+player2.introduce()
+
+</code>
+  </div>
+  <h2> c++</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+// #include <iostream>
+// using namespace std;
+// int main() {
+//     int d;
+//     cout << "enter day number (1-7): ";
+//     cin>>d;
+
+//     switch(d) 
+//     {
+//         case 1:
+//             cout << "Monday";
+//             break;
+
+//         case 2:
+//             cout << "Tuesday";
+//             break;
+
+//         case 3:
+//             cout << "Wednesday";
+//             break;
+
+//         case 4:
+//             cout<<"Thursday";
+//             break;
+
+//         case 5:
+//             cout<<"Friday";
+//             break;
+
+//         case 6:
+//             cout<< "Saturday"; 
+//             break;
+
+//         case 7: 
+//             cout<<"Sunday"; 
+//             break;
+
+//         default:
+//             cout << "Invalid day";
+//     }
+// }
+
+
+// #include <iostream>
+// using namespace std;
+
+// float sim(float a, float r, float y)
+// {
+//     return (a*r*y)/100;
+// }
+
+// int main() {
+//     float a,r,y,s;
+//     cout<<"enter the amount : "<<endl;
+//     cin>>a;
+//     cout<<"enter the rate : "<<endl;
+//     cin>>r;
+//     cout<<"enter the year : "<<endl;
+//     cin>>y;
+//     s=sim(a,r,y);
+//     cout << "Simple Interest = " << s;
+//     return 0;
+// }
+
+</code>
+  </div>
+  <br>
+    <h2>c++1</h2>
+  <div class="code-container" >
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+<code>
+// #include <iostream>
+// using namespace std;
+// int main() 
+// {
+//     float a, b, c;
+//     cout << "enter the number of a : ";
+//     cin>>a;
+//     cout<<"enter the number of b : ";
+//     cin>>b;
+//     cout<<"enter the number of a : ";
+//     cin>>c;
+//     if(a > b && a > c) 
+//     {
+//         cout<<"a is a larget number = "<<;
+//     }
+//     else if(b > c) 
+//     {
+//         cout<<"b is a largest number = "<<;
+//     }
+//     else {
+//         cout<<"c is a largest niumber = "<<;
+//     }
+// }
+
+</code>
+  </div>
+<br>
+
+  
+
+  <script src="script.js"></script> <!-- JavaScript connect -->
+ 
+</body>
+</html>

@@ -36,10 +36,8 @@
   box-shadow: 0 0 15px cyan, 0 0 30px magenta;
 }
 
-
 .nav button:hover {
   border-color: magenta;
   box-shadow: 0 0 15px cyan, 0 0 30px magenta;
   animation: borderGlow 1.5s infinite alternate;
-  
 }
