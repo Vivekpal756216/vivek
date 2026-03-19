@@ -625,7 +625,7 @@ print(fibonacci(10))
         var content = document.getElementById("main-content");
         var loginBox = document.getElementById("login-box");
 
-        if (pass === "kp") { 
+        if (pass === "app") { 
             content.style.display = "block"; 
             loginBox.style.display = "none";  
 
@@ -648,7 +648,7 @@ print(fibonacci(10))
                 document.getElementById("passInput").value = ""; 
                 alert("Time Up! Page Locked.");
                 location.reload();
-            }, 30000); 
+            }, 50000); 
 
         } else {
             alert("Wrong Password! Try Again.");
