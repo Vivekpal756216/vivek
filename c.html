@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn HTML Table - 15 Items</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background: #f4f4f4; }
+        h2 { color: #333; }
+        .item-wrapper { margin-bottom: 25px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .code-container {
+            background: #000000;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #61afef;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .copy-btn:hover { background: #528bff; }
+        pre { margin: 0; font-family: 'Courier New', Courier, monospace; }
+      #main-content { display: none; padding-top: 20px; }
+#login-box { text-align: center; margin-top: 100px; }
+input { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+pre { display: none; }
+    </style>
+</head>
+<body>
+
+
+    <div id="login-box">
+    <h3>Enter Password to Access (Locks in 5s)</h3>
+    <input type="password" id="passInput" placeholder="Enter Password">
+    <button onclick="checkPass()" style="padding:10px 20px; cursor:pointer;">Unlock</button>
+</div>
+
+<div id="main-content">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>html practice</h2>
+    <div class="item-wrapper">
+        <h3><b>Q1<b> Student class</h3>
+        <div class="code-container">
+            
+    <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+ <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+class student
+{
+    int roll;
+    string name;
+
+public:
+
+    void input()
+    {
+        cout &lt;&lt; "enter roll number :";
+        cin &gt;&gt; roll;
+        cout &lt;&lt; "enter student name :";
+        cin &gt;&gt; name;
+    }
+
+    void display()
+    {
+        cout &lt;&lt; "student roll number is : " &lt;&lt; roll 
+             &lt;&lt; "\nstudent name is : " &lt;&lt; name;
+    }
+};
+
+int main()
+{
+    student s;
+    s.input();
+    s.display();
+    return 0;
+}
+</pre>
+
+
+        </div>
+    </div>
+    
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q2</b>Sum of digits of a number</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, sum = 0, m;
+    
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; n;
+    
+    while (n &gt; 0) 
+    {
+        m = n % 10;    
+        sum = sum + m; 
+        n = n / 10;    
+    }
+    
+    cout &lt;&lt; "Sum of digits is: " &lt;&lt; sum &lt;&lt; endl;
+  
+    return 0;
+}
+</pre>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q3</b> Unary Oper overloading ( length class)</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+class length
+{
+    int feet, inch;
+public:
+    void input()
+    {
+        cout &lt;&lt; "Enter feet and inches: \n";
+        cin &gt;&gt; feet &gt;&gt; inch;
+    }
+
+    void output()
+    {
+        cout &lt;&lt; feet &lt;&lt; "ft, " &lt;&lt; inch &lt;&lt; "inch" &lt;&lt; endl;
+    }
+
+    // Unary Operator Overloading
+    length operator++(int) 
+    {
+        inch++;
+        if(inch &gt;= 12)
+        {
+            inch -= 12;
+            feet++;
+        }
+        return *this; 
+    }
+};
+
+int main()
+{
+    length p;
+    p.input();
+    
+    cout &lt;&lt; "Before ++: ";
+    p.output();
+
+    p++; 
+
+    cout &lt;&lt; "After ++: ";
+    p.output();
+
+    return 0;
+}
+</pre>
+              
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q4</b> Single inheritance + function overriding</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+class base
+{
+    public:
+    void display()
+    {
+        cout &lt;&lt; "this is base class \n";
+    }
+};
+
+class derived : public base
+{
+    public:
+    void display()
+    {
+        cout &lt;&lt; "this is child class \n";
+    }
+};
+
+int main()
+{
+    derived d;
+    d.display();
+    d.base::display(); // base class calling method 
+    return 0;
+}
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="item-wrapper">
+        
+<h3><b>Q5</b> Copy content on file to another</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+#include&lt;fstream&gt;
+using namespace std;
+
+int main()
+{
+    char f1[100], f2[100], ch;
+
+    cout &lt;&lt; "enter the source file name with formet :";
+    cin &gt;&gt; f1;
+    cout &lt;&lt; "enter the dectination file with formet ;";
+    cin &gt;&gt; f2;
+
+    ifstream in(f1);
+    ofstream out(f2);
+
+    if(!in)
+    {
+        cout &lt;&lt; "file is not found !!!!!!!";
+        return 0;
+    }
+
+    if(!out)
+    {
+        cout &lt;&lt; "destination file not created!";
+        return 0;
+    }
+
+    cout &lt;&lt; ".......copying file " &lt;&lt; endl;
+
+    while(in.get(ch))
+    {
+        out.put(ch);
+    }
+
+    cout &lt;&lt; "copy is completed" &lt;&lt; endl;
+
+    in.close();
+    out.close();
+}
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q6</b> Virtual functions</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+class student
+{
+    public:
+    virtual void display()
+    {
+        cout &lt;&lt; "it is base class ";
+    }
+};
+
+class college : public student
+{
+    void display()
+    {
+        cout &lt;&lt; "this is child";
+    }
+};
+
+int main()
+{
+    student *s;
+    college c;
+
+    s = &c;
+    s-&gt;display();
+
+    return 0;
+}
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+       <h3><b>Q7</b> program to calculate volume of Box , Sphere and a Cone.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int v, l, b, h, shpare, r, c;
+
+    cout &lt;&lt; "**************** valume of box ********************" &lt;&lt; endl;
+    cout &lt;&lt; "enter the length and breadth:";
+    cin &gt;&gt; l &gt;&gt; b &gt;&gt; h;
+    v = l * b * h;
+    cout &lt;&lt; "valume of box = " &lt;&lt; v &lt;&lt; endl;
+
+    cout &lt;&lt; "**************** valume of sphare ********************" &lt;&lt; endl;
+    cout &lt;&lt; "enter the radius  ";
+    cin &gt;&gt; r;
+    shpare = (4.0/3) * 3.14 * r * r * r;
+    cout &lt;&lt; "volume of shpare = " &lt;&lt; shpare &lt;&lt; endl;
+
+    cout &lt;&lt; "**************** valume of Cone ********************" &lt;&lt; endl;
+    cout &lt;&lt; "enter the radius : ";
+    cin &gt;&gt; r;
+    cout &lt;&lt; "enter tha height:";
+    cin &gt;&gt; h;
+    c = (1.0/3) * 3.14 *h* r * r * h;
+    cout &lt;&lt; "vloume of cone = " &lt;&lt; c;
+}
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q8</b> Program to find largest of three numbers.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include&lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int a, b, c;
+
+    cout &lt;&lt; "enter number of A :";
+    cin &gt;&gt; a;
+    cout &lt;&lt; "enter number of B :";
+    cin &gt;&gt; b;
+    cout &lt;&lt; "enter number of C :";
+    cin &gt;&gt; c;
+
+    // CONDITION CHECK PART
+    if(a &gt; b && a &gt; c)
+        cout &lt;&lt; "largest number is = " &lt;&lt; a;
+    else if (b &gt; c)
+        cout &lt;&lt; "largest number is = " &lt;&lt; b;
+    else
+        cout &lt;&lt; "largest number is = " &lt;&lt; c;
+}
+</pre>
+        </div>
+    </div>
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q9</b> Convert Seconds to Hr, min sec</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int s, h, min, sec;
+
+    cout &lt;&lt; "Enter seconds: ";
+    cin &gt;&gt; sec;
+
+    h = sec / 3600;
+    min = (sec % 3600) / 60;
+    s = sec % 60;
+
+    cout &lt;&lt; "hours = " &lt;&lt; h &lt;&lt; endl;
+    cout &lt;&lt; "minuts = " &lt;&lt; min &lt;&lt; endl;
+    cout &lt;&lt; "secound = " &lt;&lt; s &lt;&lt; endl;
+
+    return 0;
+}
+</pre>
+        
+        </div>
+    </div></div>
+    <script>
+    function checkPass() {
+    
+    var pass = document.getElementById("passInput").value;
+    var content = document.getElementById("main-content");
+    var loginBox = document.getElementById("login-box");
+
+    if (pass === "kp") { 
+        content.style.display = "block"; 
+        loginBox.style.display = "none";  
+
+        // जादू: यह लाइन हर 'pre' से पहले अपने आप बटन जोड़ देगी (अगर पहले से नहीं है)
+        document.querySelectorAll('.code-container').forEach(container => {
+            if (!container.querySelector('.show-btn')) {
+                let btn = document.createElement('button');
+                btn.innerHTML = "Show Code";
+                btn.className = "show-btn";
+                btn.onclick = function() { toggleCode(this); };
+                // बटन की स्टाइल
+                btn.style = "background:black; color:black; border:none; padding:5px 12px; cursor:pointer; border-radius:4px; font-weight:bold; margin-bottom:10px;";
+                container.prepend(btn);
+            }
+        });
+            // 30 seconds timer (30000ms)
+            setTimeout(function() {
+                content.style.display = "none"; 
+                loginBox.style.display = "block"; 
+                
+                // Hide all pre tags on lock
+                allPre.forEach(p => p.style.display = "none");
+                
+                document.getElementById("passInput").value = ""; 
+                alert("Time Up! Page Locked.");
+                location.reload();
+            }, 30000); 
+
+        } else {
+            alert("Wrong Password! Try Again.");
+        }
+    }
+
+    function toggleCode(button) {
+        var container = button.closest('.code-container');
+        var pre = container.querySelector('pre');
+        
+        if (pre.style.display === "block") {
+            pre.style.display = "none";
+            button.innerText = "Show Code";
+        } else {
+            pre.style.display = "block";
+            button.innerText = "Hide Code";
+        }
+    }
+
+    function copyThisCode(button) {
+        var container = button.closest('.code-container');
+        var preTag = container.querySelector('pre');
+        var codeText = preTag.innerText;
+        
+        navigator.clipboard.writeText(codeText).then(function() {
+            var originalText = button.innerText;
+            button.innerText = "Copied!";
+            button.style.background = "#98c379";
+            setTimeout(function() {
+                button.innerText = originalText;
+                button.style.background = "#61afef";
+            }, 2000);
+        });
+    }
+</script>
+
+
+</body>
+</html>
