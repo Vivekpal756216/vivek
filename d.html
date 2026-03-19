@@ -255,31 +255,34 @@ int main()
     </div>
 
     <div class="item-wrapper">
-        <h3><b>Q3</b>3  Aim : To Implement linear and binary search algorithms on a list.</h3>
+        <h3><b>Q3</b> Aim : To Implement linear and binary search algorithms on a list.</h3>
         <div class="code-container">
             <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
             <pre>
+                // Q33 Aim : To Implement linear and binary search algorithms on a list.
+
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt; // For sort()
+
 using namespace std;
 
 // Linear search function
-int linearsearch(vector&lt;int&gt; arr, int key) {
+int linearsearch(const vector&lt;int&gt;&amp; arr, int key) {
     for (int i = 0; i &lt; arr.size(); i++) {
         if (arr[i] == key)
-            return i; // Return index
+            return i; 
     }
-    return -1; // Not found
+    return -1; 
 }
 
 // Binary search function
-int binarysearch(vector&lt;int&gt; arr, int key) {
+int binarysearch(const vector&lt;int&gt;&amp; arr, int key) {
     int low = 0;
     int high = arr.size() - 1;
 
     while (low &lt;= high) {
-        int mid = (low + high) / 2;
+        int mid = low + (high - low) / 2;
 
         if (arr[mid] == key)
             return mid;
@@ -288,18 +291,21 @@ int binarysearch(vector&lt;int&gt; arr, int key) {
         else
             high = mid - 1;
     }
-    return -1; // Not found
+    return -1; 
 }
 
 int main() {
     int n, key, choice;
 
     cout &lt;&lt; "Enter number of elements: ";
-    cin &gt;&gt; n;
+    while (!(cin &gt;&gt; n)) {
+        cout &lt;&lt; "Invalid input! Enter a number: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
 
     vector&lt;int&gt; arr(n);
-
-    cout &lt;&lt; "Enter elements:\n";
+    cout &lt;&lt; "Enter " &lt;&lt; n &lt;&lt; " elements:\n";
     for (int i = 0; i &lt; n; i++) {
         cin &gt;&gt; arr[i];
     }
@@ -307,45 +313,46 @@ int main() {
     cout &lt;&lt; "Enter element to search: ";
     cin &gt;&gt; key;
 
+    cin.ignore(1000, '\n');
+
     cout &lt;&lt; "\n--- Search Menu ---\n";
     cout &lt;&lt; "1. Linear Search\n";
     cout &lt;&lt; "2. Binary Search\n";
     cout &lt;&lt; "Enter choice: ";
     cin &gt;&gt; choice;
 
-    int result;
+    int result = -1;
 
     switch (choice) {
         case 1:
             result = linearsearch(arr, key);
-            if (result != -1)
-                cout &lt;&lt; "Element found at position: " &lt;&lt; result + 1 &lt;&lt; endl;
-            else
-                cout &lt;&lt; "Element not found!\n";
             break;
 
         case 2:
-            // Sort before binary search
             sort(arr.begin(), arr.end());
-
-            cout &lt;&lt; "Sorted list: ";
-            for (int x : arr)
-                cout &lt;&lt; x &lt;&lt; " ";
+            cout &lt;&lt; "Sorted list for Binary Search: ";
+            for (int x : arr) cout &lt;&lt; x &lt;&lt; " ";
             cout &lt;&lt; endl;
-
             result = binarysearch(arr, key);
-            if (result != -1)
-                cout &lt;&lt; "Element found at position: " &lt;&lt; result + 1 &lt;&lt; endl;
-            else
-                cout &lt;&lt; "Element not found!\n";
             break;
 
         default:
             cout &lt;&lt; "Invalid choice!\n";
+            return 0;
     }
+
+    if (result != -1)
+        cout &lt;&lt; "\nSUCCESS: Element found at position: " &lt;&lt; result + 1 &lt;&lt; endl;
+    else
+        cout &lt;&lt; "\nFAILED: Element not found!\n";
+
+    cout &lt;&lt; "\nPress Enter to exit the program...";
+    cin.ignore(1000, '\n');
+    cin.get();
 
     return 0;
 }
+
 </pre>
         </div>
     </div>
