@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn HTML Table - 15 Items</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background: #f4f4f4; }
+        h2 { color: #333; }
+        .item-wrapper { margin-bottom: 25px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .code-container {
+            background: #000000;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #61afef;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .copy-btn:hover { background: #528bff; }
+        pre { margin: 0; font-family: 'Courier New', Courier, monospace; display: none; }
+        #main-content { display: none; padding-top: 20px; }
+        #login-box { text-align: center; margin-top: 100px; }
+        input { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+<div id="login-box">
+    <h3>Enter Password to Access (Locks in 30s)</h3>
+    <input type="password" id="passInput" placeholder="Enter Password">
+    <button onclick="checkPass()" style="padding:10px 20px; cursor:pointer;">Unlock</button>
+</div>
+
+<div id="main-content">
+    <h2>html practice</h2>
+
+    <div class="item-wrapper">
+        <h3><b>1A </b>Aim : To input and display 1d array elements</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+         <pre> #include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int n, i, arr[100];
+
+    cout &lt;&lt; "enter the number of elements : ";
+    cin &gt;&gt; n;
+
+    for(i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+
+    cout &lt;&lt; "array elements:" &lt;&lt; endl;
+    for (i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; "\t";
+    }
+
+    return 0;
+}
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>1B</b> 1B Aim : To input array elements and display their sum and average</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+               
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+int n,i,arr[100];
+int sum=0;
+float avg;
+printf("enter number of elements:");
+scanf("%d",&amp;n);
+for(i=0;i&lt;n;i++){
+scanf("%d", &amp;arr[i]);
+sum +=arr[i];
+}
+avg=(float)sum/n;
+printf("sum= %d\n",sum);
+printf("average= %.2f\n",avg);
+return 0;
+}
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>1C</b> Aim : To input and display 2d array elements.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+int n,i,arr[100];
+int sum=0;
+float avg;
+printf("enter number of elements:");
+scanf("%d",&amp;n);
+for(i=0;i&lt;n;i++){
+scanf("%d", &amp;arr[i]);
+sum +=arr[i];
+}
+avg=(float)sum/n;
+printf("sum= %d\n",sum);
+printf("average= %.2f\n",avg);
+return 0;
+}</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>1D</b>  Aim : To perform addition of 2d arrays.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+A=[[1,2],[3,4]]
+B=[[5,6],[7,8]]
+result=[[0,0],[0,0]]
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        result[i][j]=A[i][j]+B[i][j]
+print("sum of matrices : ")
+for row in result:
+    print(row)</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q2</b> To create a list-based stack and perform stack operations.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+                
+#include &lt;iostream&gt;
+using namespace std;
+//Node structure
+struct Node
+{
+    int data;
+    Node*next;
+};
+//Top of the stack
+Node*top=NULL;
+//push operation
+void push(int value){
+    Node*newNode=new Node();
+    newNode-&gt;data=value;
+    newNode-&gt;next=top;
+    top=newNode;
+    cout&lt;&lt;value&lt;&lt;" pushed into the stack\n";
+}
+//pop operation
+void pop()
+{
+    if (top==NULL)
+    {
+        cout&lt;&lt;"stack underflow! stack is empty.\n";
+        return;
+    }
+    Node*temp=top;
+    cout&lt;&lt;temp-&gt;data&lt;&lt;" popped from stack\n";
+    top=top-&gt;next;
+    delete temp;
+}
+//peek operation
+void peek()
+{
+    if (top==NULL)
+    {
+        cout&lt;&lt;"stack is empty.\n";
+    }
+    else
+    {
+        cout&lt;&lt;"top element is:"&lt;&lt;top-&gt;data&lt;&lt;endl;
+    }
+}
+//display stack elements
+void display()
+{
+    if(top==NULL)
+    {
+        cout&lt;&lt;"stack is empty./n";
+        return;
+    }
+    Node*temp=top;
+    cout&lt;&lt;"stack elements :";
+    while (temp!=NULL)
+    {
+        cout&lt;&lt;temp-&gt;data&lt;&lt;" ";
+        temp=temp-&gt;next;
+    }
+    cout&lt;&lt;endl;
+}
+//main function
+int main()
+{
+    int choice,value;
+    do
+    {
+        cout&lt;&lt;"\n---Stack Menu---\n";
+        cout&lt;&lt;"1.push\n2.pop\n3.peek\n4.display\n5.exit\n";
+        cout&lt;&lt;"enter your choice :";
+        cin&gt;&gt;choice;
+        switch(choice)
+        {
+            case 1:
+            cout&lt;&lt;"Enter the value to push : ";
+            cin&gt;&gt;value;
+            push(value);
+            break;
+            case 2:
+            pop();
+            break;
+            case 3:
+            peek();
+            break;
+            case 4:
+            display();
+            break;  
+            case 5:
+            cout&lt;&lt;"exiting program.\n";
+            break;
+            default:
+            cout&lt;&lt;"Invalid choice!\n";
+        }
+    }
+    while (choice!=5);
+    return 0;
+}
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q3</b>3  Aim : To Implement linear and binary search algorithms on a list.</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt; // For sort()
+using namespace std;
+
+// Linear search function
+int linearsearch(vector&lt;int&gt; arr, int key) {
+    for (int i = 0; i &lt; arr.size(); i++) {
+        if (arr[i] == key)
+            return i; // Return index
+    }
+    return -1; // Not found
+}
+
+// Binary search function
+int binarysearch(vector&lt;int&gt; arr, int key) {
+    int low = 0;
+    int high = arr.size() - 1;
+
+    while (low &lt;= high) {
+        int mid = (low + high) / 2;
+
+        if (arr[mid] == key)
+            return mid;
+        else if (arr[mid] &lt; key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1; // Not found
+}
+
+int main() {
+    int n, key, choice;
+
+    cout &lt;&lt; "Enter number of elements: ";
+    cin &gt;&gt; n;
+
+    vector&lt;int&gt; arr(n);
+
+    cout &lt;&lt; "Enter elements:\n";
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+
+    cout &lt;&lt; "Enter element to search: ";
+    cin &gt;&gt; key;
+
+    cout &lt;&lt; "\n--- Search Menu ---\n";
+    cout &lt;&lt; "1. Linear Search\n";
+    cout &lt;&lt; "2. Binary Search\n";
+    cout &lt;&lt; "Enter choice: ";
+    cin &gt;&gt; choice;
+
+    int result;
+
+    switch (choice) {
+        case 1:
+            result = linearsearch(arr, key);
+            if (result != -1)
+                cout &lt;&lt; "Element found at position: " &lt;&lt; result + 1 &lt;&lt; endl;
+            else
+                cout &lt;&lt; "Element not found!\n";
+            break;
+
+        case 2:
+            // Sort before binary search
+            sort(arr.begin(), arr.end());
+
+            cout &lt;&lt; "Sorted list: ";
+            for (int x : arr)
+                cout &lt;&lt; x &lt;&lt; " ";
+            cout &lt;&lt; endl;
+
+            result = binarysearch(arr, key);
+            if (result != -1)
+                cout &lt;&lt; "Element found at position: " &lt;&lt; result + 1 &lt;&lt; endl;
+            else
+                cout &lt;&lt; "Element not found!\n";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid choice!\n";
+    }
+
+    return 0;
+}
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+       <h3><b>Q4 A</b> Aim:Implement sorting algorithms (eg.bubble, selection, insertion)</h3>
+       <h3><b>Q4 A</b> bubble SHORT</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+                
+def bubble_sort(arr):
+    n=len(arr)
+
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j]&gt; arr[j+1]:
+                # Swap
+                arr[j], arr[j+1]=arr[j+1], arr[j]
+
+    return arr
+
+# Example
+numbers=[64,34,25,12,22,11,90]
+sorted_numbers=bubble_sort(numbers)
+print(sorted_numbers)
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q4 B</b> selection,</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+                
+def selection_sort(arr):
+    n=len(arr)
+    for i in range(n):
+        min_index=i
+
+        for j in range(i+1, n):
+            if arr[j]&lt;arr[min_index]:
+                min_index=j
+
+        #Swap the found minimum with the first unsorted element
+        arr[i], arr[min_index]=arr[min_index], arr[i]
+
+    return arr
+
+# Example
+numbers = [64, 25, 12, 22, 11]
+print(selection_sort(numbers))
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>QC</b> insertion SHORT</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+def insertion_sort(arr):
+    n=len(arr)
+
+    for i in range(1, n):
+        key=arr[i]      # Element to insert
+        j=i-1
+
+        # Move elements greater than key one position ahead
+        while j&gt;=0 and arr[j]&gt;key:
+            arr[j+1]=arr[j]
+            j-=1
+
+        arr[j+1]=key    # Insert key at correct position
+
+    return arr
+
+#Example
+numbers=[5, 2, 9, 1, 5, 6]
+print(insertion_sort(numbers))
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q5</b>implemet algorithm to find the Nth MAX/MIN element in a list</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+def nth_min(arr, n):
+    sorted_arr=sorted(arr)
+    return sorted_arr[n-1]
+
+
+# Example
+numbers=[7, 100, 4, 33, 20, 15]
+print(nth_min(numbers, 3))      # 3rd smallest
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q6</b>6Implement algorithm to find a pattern in a given string</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+def naive_string_match(text, pattern):
+    n = len(text)
+    m = len(pattern)
+
+    for i in range(n - m + 1):
+        match = True
+
+    for j in range(m):
+        if text[i + j] != pattern[j]:
+            match = False
+            break
+
+    if match:
+        print(f"Pattern found at index: {i}")
+
+# Example usage
+text = "AABAACAADAABAABA"
+pattern = "AABA"
+naive_string_match(text, pattern)
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q7 A</b>Aim : Implement recursive algorithms (eg. Factorial, Fibonacci,Tower of Hanoi).</h3>
+        <h4>factorial</h4>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+
+def factorial(n):
+    if n==0 or n==1: #Base case
+       return 1
+    else:
+        return n*factorial(n-1)  #Recursive call
+        
+#Example
+print(factorial(5))  #output:120
+
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q7 B</b> Aim : Implement recursive algorithms (eg. Factorial, Fibonacci,Tower of Hanoi).</h3>
+        <H4>fibonacci</H4>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+
+def fibonacci(n):
+    if n==0:   #Base case
+       return 0
+    elif n==1:  #Base case
+       return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+        
+#Example 
+print(fibonacci(6))   #output:8
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q7C</b>Aim : Implement recursive algorithms (eg. Factorial, Fibonacci,Tower of Hanoi).</h3>
+        <H4>tower_of_hanoi</H4>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+                
+
+def tower_of_hanoi(n,source,auxiliary,destination):
+    if n==1:    #Base case
+       print(f"Move disk 1 from {source} to {destination}")
+       return
+    
+    tower_of_hanoi(n-1,source,destination,auxiliary)
+    
+    print(f"Move disk {n} from {source} to {destination}")
+    
+    tower_of_hanoi(n-1,auxiliary,source,destination)
+    
+#Example 
+tower_of_hanoi(3,'A','B','C')
+
+            </pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q8</b> Convert Seconds to Hr, min sec</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>/* PASTE Q9 CODE HERE */</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q9</b> Aim : Implement algorithms like merge slot and Strassen’s matrix multiplication</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+def merge_sort(arr):
+    if len(arr)&lt;=1: #Base case
+        return arr
+    # Divide
+    mid=len(arr)//2
+    left=merge_sort(arr[:mid])
+    right=merge_sort(arr[mid:])
+
+    # Conquer &amp; Combine
+    return merge(left, right)
+
+def merge(left, right):
+    result=[]
+    i=j=0
+
+    # Compare elements from both halves
+    while i&lt;len(left) and j&lt;len(right):
+        if left[i] &lt;right[j]:
+            result.append(left[i])
+            i +=1
+        else:
+            result.append(right[j])
+            j +=1
+    # Add remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+# Example
+numbers=[38, 27, 43, 3, 9, 82, 10]
+print(merge_sort(numbers))
+</pre>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q10</b> Aim:Implement algorithms for Fibonacci series and longest common subsequence using
+dynamic programming</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+def fibonacci(n):
+    if n&lt;=1:
+        return n 
+    dp=[0]*(n+1)
+    
+    dp[1]=1
+    
+    for i in range (2,n+1):
+        dp[i]=dp[i-1]+dp[i-2]
+        
+    return dp[n]
+
+print(fibonacci(10))
+</pre>
+        </div>
+    </div>
+
+    
+
+<script>
+    function checkPass() {
+        var pass = document.getElementById("passInput").value;
+        var content = document.getElementById("main-content");
+        var loginBox = document.getElementById("login-box");
+
+        if (pass === "kp") { 
+            content.style.display = "block"; 
+            loginBox.style.display = "none";  
+
+            document.querySelectorAll('.code-container').forEach(container => {
+                if (!container.querySelector('.show-btn')) {
+                    let btn = document.createElement('button');
+                    btn.innerHTML = "Show Code";
+                    btn.className = "show-btn";
+                    btn.onclick = function() { toggleCode(this); };
+                    // बटन और टेक्स्ट दोनों ब्लैक कर दिए गए हैं
+                    btn.style = "background:black; color:black; border:1px solid black; padding:5px 12px; cursor:pointer; border-radius:4px; font-weight:bold; margin-bottom:10px;";
+                    container.prepend(btn);
+                }
+            });
+
+            setTimeout(function() {
+                content.style.display = "none"; 
+                loginBox.style.display = "block"; 
+                document.querySelectorAll('pre').forEach(p => p.style.display = "none");
+                document.getElementById("passInput").value = ""; 
+                alert("Time Up! Page Locked.");
+                location.reload();
+            }, 30000); 
+
+        } else {
+            alert("Wrong Password! Try Again.");
+        }
+    }
+
+    function toggleCode(button) {
+        var container = button.closest('.code-container');
+        var pre = container.querySelector('pre');
+        if (pre.style.display === "block") {
+            pre.style.display = "none";
+            button.innerText = "Show Code";
+        } else {
+            pre.style.display = "block";
+            button.innerText = "Hide Code";
+        }
+    }
+
+    function copyThisCode(button) {
+        var container = button.closest('.code-container');
+        var preTag = container.querySelector('pre');
+        var codeText = preTag.innerText;
+        
+        navigator.clipboard.writeText(codeText).then(function() {
+            var originalText = button.innerText;
+            button.innerText = "Copied!";
+            button.style.background = "#98c379";
+            setTimeout(function() {
+                button.innerText = originalText;
+                button.style.background = "#61afef";
+            }, 2000);
+        });
+    }
+</script>
+</body>
+</html>
