@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn HTML Table - 15 Items</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background: #f4f4f4; }
+        h2 { color: #333; }
+        .item-wrapper { margin-bottom: 25px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .code-container {
+            background: #000000;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #61afef;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .copy-btn:hover { background: #528bff; }
+        pre { margin: 0; font-family: 'Courier New', Courier, monospace; }
+      #main-content { display: none; padding-top: 20px; }
+#login-box { text-align: center; margin-top: 100px; }
+input { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+pre { display: none; }
+    </style>
+</head>
+<body>
+
+
+    <div id="login-box">
+    <h3>Enter Password to Access (Locks in 5s)</h3>
+    <input type="password" id="passInput" placeholder="Enter Password">
+    <button onclick="checkPass()" style="padding:10px 20px; cursor:pointer;">Unlock</button>
+</div>
+
+<div id="main-content">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>html practice</h2>
+    <div class="item-wrapper">
+        <h3><b>Q1<b>Demostrate GUI</h3>
+        <div class="code-container">
+            
+    <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+ <pre>
+from tkinter import *
+def mul():
+    a=float(e1.get())
+    b=float(e2.get())
+    c=a*b
+
+    l.config(text=f"result = {c}")
+
+
+win=Tk()
+win.title('multiplay ')
+win.geometry("500x300")
+
+l1=Label(win,text="enter number of a:")
+l1.place(x=50,y=50)
+l2=Label(win,text="enter number of b:")
+l2.place(x=50,y=80)
+
+e1=Entry(win,bg="red")
+e1.place(x=200,y=50)
+e2=Entry(win,bg="red")
+e2.place(x=200,y=80)
+
+b1=Button(win,text="multiplay a and b",command=mul)
+b1.place(x=80,y=160)
+
+l=Label(win,text="")
+l.place(x=80,y=110)
+
+win.mainloop()
+</pre>
+
+
+        </div>
+    </div>
+    
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q2 A</b>Class and Object (class student = name/age/)</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+class student:
+    def __init__(self,name,age ):
+        self.name=name
+        self.age=age 
+    
+    def show(self):
+        print("name",self.name)
+        print("age ",self.age)
+
+n=input("enter the name :")
+a=input("enter the age :")
+
+s=student(n,a)
+s.show()
+</pre>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q2 B</b> class book=auth./price</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+class book:
+    def __init__(self,author,price):
+        self.author=author
+        self.price=price
+
+    def show(self):
+        print(f"author name is {self.author}")
+        print(f"book price is {self.price}")
+        
+b=book("raj",200)
+b.show()
+</pre>
+              
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <h3><b>Q3</b> Demonstrate single Inheritance </h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+class base:
+    def display(self):
+        print("this is parent class ")
+
+class derived(base):
+    def show(self):
+        print("this is child class ")
+
+s=derived()
+s.display()
+s.show()
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="item-wrapper">
+        
+<h3><b>Q4</b>Demonstrate Multi-level Inheritance</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+class a:
+    def show(self):
+        print("this is parent class for b ")
+
+class b(a):
+    def display(self):
+        print("this is child class of a and parent class of c")
+
+class c(b):
+    def dev(self):
+        print("this is child class of a ")
+
+
+b=c()
+b.show()
+b.display()
+b.dev()
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q5</b> Demonstrate loop</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+# Program to demonstrate different loops in Python
+
+# FOR LOOP
+print("For Loop Example:")
+for i in range(1, 6):
+    print("Number:", i)
+
+# WHILE LOOP
+print("\nWhile Loop Example:")
+j = 1
+while j <= 5:
+    print("Number:", j)
+    j += 1
+
+# NESTED LOOP
+print("\nNested Loop Example:")
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(i, j)
+
+# LOOP WITH CONDITION
+print("\nEven Numbers from 1 to 10:")
+for i in range(1, 11):
+    if i % 2 == 0:
+        print(i)
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+       <h3><b>Q6</b> Demonstrate Method overloading and overriding</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+class cal:
+    def add(self,a,b=0,c=0):
+        return a+b+c
+
+c=cal()
+print("addition of two numbers value",c.add(10,20))
+print("addition of three number of ",c.add(10,10,10))
+
+
+# method overriding 
+
+class base:
+    def show(self):
+        print("this is base class ")
+
+class derived(base):
+    def show(self):
+        print("this is child class ")
+
+d=derived()
+d.show()
+base.show(d) #calling method for base class 
+</pre>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q7</b> Demonstrate matplotlib</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            <pre>
+import matplotlib.pyplot as plt
+
+# Data
+x=[1,2,3,4]
+y=[10,20,30,40]
+
+plt.plot(x,y)
+plt.title("simpale graph")
+plt.xlabel("x-axis")
+plt.ylabel("y-axix")
+plt.show()
+</pre>
+        </div>
+    </div>
+
+
+
+    <div class="item-wrapper">
+        <h3><b>Q8</b> Demonstrate numpy</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+import numpy as np
+arr=np.array([1,2,3,4,5])
+print("array",arr)
+print("mean",np.mean(arr))
+print("square root",np.sqrt(arr))
+</pre>
+        
+        </div>
+    </div>
+
+
+    <div class="item-wrapper">
+        <h3><b>Q9</b> Implement in python programming to handle error when diving number by zero</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+
+try:
+    a = float(input("Enter numerator: "))
+    b = float(input("Enter denominator: "))
+
+    resul=a/b
+    print("division result :",resul)
+except ZeroDivisionError:
+    print("error : cannot divid by zero !")
+except ValueError:
+    print("error: invalid input , plese enter  a number !")
+finally:
+    print("program executed successfully")
+    
+</pre>
+        
+        </div>
+    </div>
+
+
+    <div class="item-wrapper">
+        <h3><b>Q10</b> Q.10 Multiplying number by zero</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>
+
+try:
+    num = float(input("Enter a number: "))
+    result = num * 0
+    print("Multiplication Result:", result)
+
+except ValueError:
+    print("Error: Please enter a valid number!")
+
+finally:
+    print("Program executed successfully.")
+</pre>
+        
+        </div>
+    </div></div>
+
+
+    <script>
+    function checkPass() {
+    
+    var pass = document.getElementById("passInput").value;
+    var content = document.getElementById("main-content");
+    var loginBox = document.getElementById("login-box");
+
+    if (pass === "acc") { 
+        content.style.display = "block"; 
+        loginBox.style.display = "none";  
+
+        // जादू: यह लाइन हर 'pre' से पहले अपने आप बटन जोड़ देगी (अगर पहले से नहीं है)
+        document.querySelectorAll('.code-container').forEach(container => {
+            if (!container.querySelector('.show-btn')) {
+                let btn = document.createElement('button');
+                btn.innerHTML = "Show Code";
+                btn.className = "show-btn";
+                btn.onclick = function() { toggleCode(this); };
+                // बटन की स्टाइल
+                btn.style = "background:black; color:black; border:none; padding:5px 12px; cursor:pointer; border-radius:4px; font-weight:bold; margin-bottom:10px;";
+                container.prepend(btn);
+            }
+        });
+            // 30 seconds timer (30000ms)
+            setTimeout(function() {
+                content.style.display = "none"; 
+                loginBox.style.display = "block"; 
+                
+                // Hide all pre tags on lock
+                allPre.forEach(p => p.style.display = "none");
+                
+                document.getElementById("passInput").value = ""; 
+                alert("Time Up! Page Locked.");
+                location.reload();
+            }, 30000); 
+
+        } else {
+            alert("Wrong Password! Try Again.");
+        }
+    }
+
+    function toggleCode(button) {
+        var container = button.closest('.code-container');
+        var pre = container.querySelector('pre');
+        
+        if (pre.style.display === "block") {
+            pre.style.display = "none";
+            button.innerText = "Show Code";
+        } else {
+            pre.style.display = "block";
+            button.innerText = "Hide Code";
+        }
+    }
+
+    function copyThisCode(button) {
+        var container = button.closest('.code-container');
+        var preTag = container.querySelector('pre');
+        var codeText = preTag.innerText;
+        
+        navigator.clipboard.writeText(codeText).then(function() {
+            var originalText = button.innerText;
+            button.innerText = "Copied!";
+            button.style.background = "#98c379";
+            setTimeout(function() {
+                button.innerText = originalText;
+                button.style.background = "#61afef";
+            }, 2000);
+        });
+    }
+</script>
+
+
+</body>
+</html>
