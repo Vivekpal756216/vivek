@@ -374,7 +374,30 @@ finally:
 </pre>
         
         </div>
-    </div></div>
+    </div>
+        
+        <div class="item-wrapper">
+        <h3><b>Q11</b>not included</h3>
+        <div class="code-container">
+            <button class="copy-btn" onclick="copyThisCode(this)">Copy Code</button>
+            
+<pre>for multipledispatch import dispatch
+import math                 
+class shape:
+    @ dispatch(float,float)
+    def area(self,l,b):
+        print("area of rectangle=",l*b)
+    @ dispatch(int,int)
+    def area(self,b,h):
+        print("area of triangle=",0.5*b*h)   
+    @ dispatch(int)
+    def area(self,side):
+        print("square area=",side*side)   
+s=shape()
+s.area(10.0,5.0)
+s.area(10,5)
+s.area(5)</pre></div></div>
+        </div>
 
 
     <script>
