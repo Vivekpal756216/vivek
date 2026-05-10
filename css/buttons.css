@@ -1,0 +1,100 @@
+/* --- buttons.css --- */
+
+/* Basic Button Setup */
+button {
+  background: rgba(255, 255, 255, 0.05); /* Light Glass Effect */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: #fff;
+  border: 1px solid rgba(0, 242, 255, 0.4); /* Thinner neon border */
+  padding: 0.8rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.8rem; /* Match card corners */
+  z-index: 1;
+}
+
+/* Shine Effect on Hover */
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.6s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* "Hire Me" Specific (Neon Red) */
+.btn-hire {
+  border-color: rgba(255, 45, 85, 0.5) !important;
+  color: #ff2d55 !important;
+}
+
+.btn-hire:hover {
+  background: rgba(255, 45, 85, 0.15);
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.4);
+  transform: translateY(-3px);
+  border-color: #ff2d55 !important;
+}
+
+/* "View Projects" Specific (Neon Cyan) */
+.btn-projects {
+  border-color: rgba(0, 242, 255, 0.5) !important;
+  color: #00f2ff !important;
+}
+
+.btn-projects:hover {
+  background: rgba(0, 242, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+  transform: translateY(-3px);
+  border-color: #00f2ff !important;
+}
+
+/* Navigation Buttons (Header) */
+.nav button {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border-bottom: 2px solid transparent;
+  backdrop-filter: none;
+}
+
+.nav button:hover {
+  color: #00f2ff;
+  border-bottom: 2px solid #00f2ff;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button Layout inside Hero Box */
+.hire-view-projects {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .hire-view-projects {
+    justify-content: center;
+  }
+  button {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.8rem;
+  }
+}

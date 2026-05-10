@@ -1,0 +1,121 @@
+/* --- CCNA Section Container --- */
+#ccna-module-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    min-height: 500px;
+}
+
+/* --- The 5-Page Stack Logic --- */
+.stack-container {
+    position: relative;
+    width: 420px;
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.page-layer {
+    position: absolute;
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 242, 255, 0.1);
+}
+
+/* Background Layers (Hidden/Faint) */
+.page-5 { height: 260px; background: rgba(255, 255, 255, 0.01); bottom: 50px; width: 75%; left: 12.5%; z-index: 1; opacity: 0; }
+.page-4 { height: 260px; background: rgba(255, 255, 255, 0.02); bottom: 40px; width: 80%; left: 10%; z-index: 2; opacity: 0.1; }
+.page-3 { height: 260px; background: rgba(255, 255, 255, 0.03); bottom: 30px; width: 85%; left: 7.5%; z-index: 3; opacity: 0.15; }
+
+/* Associated Title Layer (Reveals on Hover) */
+.page-2 {
+    height: 260px;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    bottom: 20px;
+    width: 92%;
+    left: 4%;
+    z-index: 4;
+    padding: 40px 20px;
+    text-align: center;
+    border: 1.5px solid rgba(0, 242, 255, 0.2);
+}
+
+/* Front Card (The Main Face) */
+.main-card {
+    height: 260px;
+    width: 100%;
+    background: #000;
+    z-index: 10;
+    bottom: 0;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgba(0, 242, 255, 0.4);
+    box-shadow: 0 -15px 60px rgba(0,0,0,1);
+}
+
+/* --- Hover Reveal Animations --- */
+.stack-container:hover .page-5 { transform: translateY(-210px); opacity: 0.1; }
+.stack-container:hover .page-4 { transform: translateY(-165px); opacity: 0.2; }
+.stack-container:hover .page-3 { transform: translateY(-120px); opacity: 0.3; }
+.stack-container:hover .page-2 { transform: translateY(-75px); opacity: 1; }
+
+.stack-container:hover .main-card {
+    border-color: #00f2ff;
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
+}
+
+/* --- Content Styling --- */
+.associated-title {
+    background: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.stack-container:hover .associated-title { opacity: 1; }
+
+.card-header { display: flex; align-items: center; gap: 20px; }
+
+.ccna-logo-ring {
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.ccna-logo-ring i { color: white; font-size: 2.2rem; }
+
+.title-text h3 {
+    margin: 0; font-size: 3rem; color: white;
+    font-weight: 900; letter-spacing: 5px;
+}
+
+.exam-id { color: #555; font-size: 0.85rem; letter-spacing: 3px; }
+
+/* Open Button Styling */
+.open-btn {
+    background: #fff; color: #000; border: none; padding: 18px;
+    border-radius: 15px; font-weight: 900; width: 100%;
+    cursor: pointer; text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center; gap: 15px;
+    transition: 0.3s;
+}
+
+.open-btn:hover {
+    background: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
+    color: white;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+}

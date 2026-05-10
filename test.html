@@ -1,0 +1,660 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Dynamic Dashboard | Vivek Pal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        :root {
+            --neon-cyan: #00f2ff;
+            --neon-pink: #ff2d55;
+            --bg-dark: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .neon-text {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        /* CCNA Grid Layout */
+        .ccna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Dynamic Box Styling */
+        .ccna-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .ccna-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .domain-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.7rem;
+            color: var(--neon-pink);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 242, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+        }
+
+        .ccna-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .ccna-card p {
+            font-size: 0.85rem;
+            color: #bbb;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Content inside the box (Hidden by default) */
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .ccna-card.active .details-list {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .details-list li {
+            font-size: 0.8rem;
+            color: #eee;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .details-list li::before {
+            content: '➜';
+            color: var(--neon-cyan);
+            margin-right: 10px;
+            font-size: 0.7rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        @media (max-width: 768px) {
+            .header-section h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-section">
+        <h1>CCNA <span class="neon-text">KNOWLEDGE BASE</span></h1>
+        <p style="color: #666; font-size: 0.9rem;">Click on any domain to expand the syllabus details</p>
+    </div>
+
+    <div class="ccna-grid">
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 1.0</span>
+            <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+            <h3>Network Fundamentals</h3>
+            <p>The basic building blocks of networking, including cables, routers, and IP addressing.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 90%;"></div></div>
+            
+            <ul class="details-list">
+                <li>Routers, L2 & L3 Switches</li>
+                <li>IPv4 & IPv6 Addressing/Subnetting</li>
+                <li>Cabling Types (Fiber, Copper)</li>
+                <li>TCP vs UDP Protocols</li>
+            </ul>
+        </div>
+
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 2.0</span>
+            <div class="icon-box"><i class="fas fa-project-diagram"></i></div>
+            <h3>Network Access</h3>
+            <p>Configuring and managing VLANs, Spanning Tree, and EtherChannels.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 75%;"></div></div>
+
+            <ul class="details-list">
+                <li>VLANs & Trunking (802.1Q)</li>
+                <li>Spanning Tree Protocol (STP)</li>
+                <li>EtherChannel (LACP/PAgP)</li>
+                <li>Wireless Architectures & APs</li>
+            </ul>
+        </div>
+
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 3.0</span>
+            <div class="icon-box"><i class="fas fa-route"></i></div>
+            <h3>IP Connectivity</h3>
+            <p>Mastering routing protocols and how data finds its way across networks.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 60%;"></div></div>
+
+            <ul class="details-list">
+                <li>Static Routing (Default, Floating)</li>
+                <li>OSPFv2 Configuration</li>
+                <li>First Hop Redundancy (HSRP)</li>
+                <li>Routing Table Selection</li>
+            </ul>
+        </div>
+
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 4.0</span>
+            <div class="icon-box"><i class="fas fa-concierge-bell"></i></div>
+            <h3>IP Services</h3>
+            <p>Essential services like DHCP, NAT, and network management tools.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 80%;"></div></div>
+
+            <ul class="details-list">
+                <li>NAT (Static, Dynamic, PAT)</li>
+                <li>DHCP & DNS Concepts</li>
+                <li>NTP & SNMP Protocols</li>
+                <li>Quality of Service (QoS)</li>
+            </ul>
+        </div>
+
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 5.0</span>
+            <div class="icon-box"><i class="fas fa-user-shield"></i></div>
+            <h3>Security Fundamentals</h3>
+            <p>Securing the network perimeter and internal device access.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 50%;"></div></div>
+
+            <ul class="details-list">
+                <li>Access Control Lists (ACLs)</li>
+                <li>Port Security</li>
+                <li>DHCP Snooping & Dynamic ARP</li>
+                <li>VPN Concepts (Site-to-Site)</li>
+            </ul>
+        </div>
+
+        <div class="ccna-card" onclick="this.classList.toggle('active')">
+            <span class="domain-tag">DOMAIN 6.0</span>
+            <div class="icon-box"><i class="fas fa-code-branch"></i></div>
+            <h3>Automation</h3>
+            <p>The future of networking: Programmability, SDN, and JSON.</p>
+            <div class="progress-container"><div class="progress-fill" style="width: 30%;"></div></div>
+
+            <ul class="details-list">
+                <li>SDN Controllers (Cisco DNA Center)</li>
+                <li>REST APIs & JSON</li>
+                <li>Puppet, Chef, & Ansible</li>
+                <li>Overlay vs Underlay</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html> -->
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Pal | Stacked Modules Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        :root {
+            --bg: #080808;
+            --card-black: #000000;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 50px;
+        }
+
+        /* --- Main Container for a Single Stack --- */
+        .module-stack {
+            position: relative;
+            width: 320px;
+            height: 200px; /* Base height */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* --- The Hidden Layers (Back Panels) --- */
+        .layer {
+            position: absolute;
+            width: 90%;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px 15px 0 0;
+            left: 5%;
+            bottom: 60px; /* Start behind main card */
+            z-index: 1;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+            padding: 15px;
+            box-sizing: border-box;
+            opacity: 0.5;
+        }
+
+        /* Multiple layers offset */
+        .layer-2 { z-index: 2; bottom: 50px; width: 94%; left: 3%; opacity: 0.7; }
+        .layer-3 { z-index: 3; bottom: 40px; width: 98%; left: 1%; opacity: 0.9; }
+
+        /* Hover Effect: Layers Slide UP */
+        .module-stack:hover .layer-1 { transform: translateY(-90px); opacity: 0.4; }
+        .module-stack:hover .layer-2 { transform: translateY(-65px); opacity: 0.7; }
+        .module-stack:hover .layer-3 { transform: translateY(-35px); opacity: 1; }
+
+        .layer-content {
+            font-size: 0.75rem;
+            color: #eee;
+            margin: 0;
+            display: none; /* Only show on hover */
+        }
+
+        .module-stack:hover .layer-content {
+            display: block;
+        }
+
+        .tag-small {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* --- Main Display Card (The Frontmost) --- */
+        .main-card {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: var(--card-black);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 15px;
+            z-index: 10;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+            transition: border-color 0.3s;
+        }
+
+        .module-stack:hover .main-card {
+            border-color: var(--neon-blue);
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+
+        .card-stats i {
+            margin-right: 5px;
+            color: var(--neon-blue);
+        }
+
+        /* --- Bottom Action Button --- */
+        .action-btn {
+            background: white;
+            color: black;
+            border: none;
+            padding: 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--neon-blue);
+        }
+
+        .locked-btn {
+            background: #1a1a1a;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="module-stack">
+        <div class="layer layer-1"></div>
+        <div class="layer layer-2"></div>
+        <div class="layer layer-3">
+            <span class="tag-small">12th Module</span>
+            <p class="layer-content">Introduction About CCNA and Computer Hardware</p>
+        </div>
+        
+        <div class="main-card">
+            <div class="card-header">
+                <h3>CCNA</h3>
+                <div class="card-stats">
+                    <span><i class="fas fa-book-open"></i> 12/24 Sections</span>
+                    <span><i class="fas fa-clock"></i> 50% completed</span>
+                </div>
+            </div>
+            <button class="action-btn"><i class="fas fa-unlock-alt"></i> Continue</button>
+        </div>
+    </div>
+
+    <div class="module-stack">
+        <div class="layer layer-1"></div>
+        <div class="layer layer-2"></div>
+        <div class="layer layer-3">
+            <span class="tag-small">Security</span>
+            <p class="layer-content">Scanning Networks & System Hacking Basics</p>
+        </div>
+        
+        <div class="main-card">
+            <div class="card-header">
+                <h3>Ethical Hacking</h3>
+                <div class="card-stats">
+                    <span><i class="fas fa-book-open"></i> 5/20 Sections</span>
+                    <span><i class="fas fa-clock"></i> 25% completed</span>
+                </div>
+            </div>
+            <button class="action-btn"><i class="fas fa-unlock-alt"></i> Continue</button>
+        </div>
+    </div>
+
+    <div class="module-stack">
+        <div class="layer layer-1" style="opacity: 0.1;"></div>
+        <div class="layer layer-2" style="opacity: 0.1;"></div>
+        <div class="layer layer-3" style="opacity: 0.2;">
+            <p class="layer-content">Advanced Firewall Policies & NAT</p>
+        </div>
+        
+        <div class="main-card" style="border-color: rgba(255,255,255,0.05);">
+            <div class="card-header">
+                <h3 style="opacity: 0.5;">Palo Alto Firewall</h3>
+                <div class="card-stats">
+                    <span><i class="fas fa-lock"></i> 0/24 Sections</span>
+                </div>
+            </div>
+            <button class="action-btn locked-btn"><i class="fas fa-lock"></i> Locked</button>
+        </div>
+    </div>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Pal | CCNA Stacked Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        :root {
+            --bg: #080808;
+            --card-black: #000000;
+            --neon-blue: #00f2ff;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* --- Main Container --- */
+        .module-stack {
+            position: relative;
+            width: 350px;
+            height: 220px;
+            cursor: pointer;
+        }
+
+        /* --- Background Layers (Syllabus & Full Form) --- */
+        .layer {
+            position: absolute;
+            width: 94%;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 15px 15px 0 0;
+            left: 3%;
+            bottom: 60px;
+            z-index: 1;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+        }
+
+        /* Hover Effect: Layer Slides Up and Reveals Full Form */
+        .module-stack:hover .layer {
+            transform: translateY(-80px);
+            opacity: 1;
+        }
+
+        .layer h4 {
+            color: var(--neon-blue);
+            margin: 0;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .layer p {
+            font-size: 0.75rem;
+            color: #ccc;
+            margin: 5px 0 0 0;
+            line-height: 1.4;
+        }
+
+        /* --- Front Card (Title & Progress) --- */
+        .main-card {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 160px;
+            background: var(--card-black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            z-index: 10;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
+            transition: border-color 0.4s;
+        }
+
+        .module-stack:hover .main-card {
+            border-color: var(--neon-blue);
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .card-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+
+        .card-stats i { color: var(--neon-blue); margin-right: 5px; }
+
+        /* --- Open Button (Customized) --- */
+        .action-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="module-stack">
+        <div class="layer">
+            <h4>CCNA FULL FORM:</h4>
+            <p>Cisco Certified Network Associate</p>
+            <p style="font-size: 0.65rem; margin-top: 10px; opacity: 0.6;">
+                <i class="fas fa-info-circle"></i> Focus: Routing, Switching & Security
+            </p>
+        </div>
+        
+        <div class="main-card">
+            <div class="card-header">
+                <h3>CCNA</h3>
+                <div class="card-stats">
+                    <span><i class="fas fa-tasks"></i> 12/24 Sections</span>
+                    <span><i class="fas fa-chart-line"></i> 50% Done</span>
+                </div>
+            </div>
+            <button class="action-btn">
+                <i class="fas fa-external-link-alt"></i> Open Module
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

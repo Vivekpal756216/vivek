@@ -1,0 +1,226 @@
+/* --- Main Footer Container --- */
+.main-footer {
+    background: rgba(5, 5, 5, 0.98); /* Deep Black Glass */
+    border-top: 1px solid rgba(0, 242, 255, 0.2);
+    padding: 60px 20px 30px;
+    margin-top: 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Layout Grid --- */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* 3 Columns layout */
+    gap: 50px;
+}
+
+/* --- Brand Section --- */
+.footer-brand .highlight {
+    color: #00f2ff; /* Neon Cyan */
+    font-size: 2rem;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-brand .tagline {
+    color: #ff003c; /* Red Highlight */
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.footer-bio {
+    color: #888;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 350px;
+}
+
+/* --- Navigation Links --- */
+.footer-group h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-group h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background: #00f2ff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links a:hover {
+    color: #00f2ff;
+    transform: translateX(8px);
+}
+
+/* --- Social Icons Grid --- */
+.cyber-social-grid {
+    display: flex;
+    gap: 15px;
+}
+
+.social-card {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.3rem;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.social-card:hover {
+    background: #00f2ff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    transform: translateY(-5px);
+}
+
+/* --- Bottom Bar --- */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.security-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00f2ff;
+    font-weight: 800;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: #00f2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00f2ff;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-group h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-links a { justify-content: center; }
+    .cyber-social-grid { justify-content: center; }
+    .footer-bottom { flex-direction: column; gap: 20px; }
+}
+
+
+/* --- MOBILE SETTINGS: Hide Bio but KEEP Contact --- */
+/* --- MOBILE SETTINGS: COMPACT & CLEAN --- */
+@media (max-width: 768px) {
+    /* 1. Bio aur Quick Links hide kiye height bachane ke liye */
+    .footer-brand, 
+    .footer-group:nth-child(2) { 
+        display: none !important; 
+    }
+
+    /* 2. Footer container ki height kam ki */
+    .main-footer {
+        padding: 20px 10px 10px !important; /* Padding kam kar di */
+        margin-top: 20px !important;
+    }
+
+    /* 3. Contact section alignment */
+    .footer-group:last-child {
+        display: block !important;
+        text-align: center;
+        width: 100%;
+        margin: 0 !important; /* Extra margin hataya */
+    }
+
+    .footer-group h4 {
+        margin-bottom: 10px !important; /* Heading ke niche ki jagah kam ki */
+        font-size: 0.9rem !important;
+    }
+
+    /* 4. Social icons ko chhota kiya */
+    .cyber-social-grid {
+        justify-content: center;
+        margin-top: 10px !important;
+        gap: 10px !important;
+    }
+
+    .social-card {
+        width: 35px !important; /* Height/Width kam ki */
+        height: 35px !important;
+        font-size: 1rem !important;
+    }
+
+    .footer-content {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10px !important; /* Bottom spacing trim ki */
+    }
+
+    /* 5. Copyright bar ko compact kiya */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 10px !important;
+        margin-top: 10px !important;
+        flex-direction: column;
+        gap: 5px !important;
+        font-size: 0.75rem !important; /* Text chhota kiya */
+    }
+}

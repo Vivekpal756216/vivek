@@ -1,0 +1,162 @@
+/* --- header.css (FINAL CLEAN MOBILE FIX) --- */
+
+
+/* Purane icon/button ki height/border hata do aur ye add karo */
+.search-btn {
+    background: transparent; /* Pura background hata do */
+    border: none;            /* Alag se border mat rakho */
+    color: #00f2ff;          /* Sirf neon color rakho */
+    cursor: pointer;
+    font-size: 1.1rem;       /* Size adjust karne ke liye */
+    display: flex;
+    align-items: center;
+    padding-right: 5px;      /* Box ke andar side mein chipka rahe */
+    transition: 0.3s ease;
+}
+
+/* Hover karne par sirf icon glow karega */
+.search-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00f2ff;
+}
+
+/* Box ko capsule banane ke liye ye check karlo */
+.search-box {
+    border-radius: 50px; 
+    overflow: hidden; /* Taaki icon box ke bahar na nikle */
+}
+
+
+
+
+.headm {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+  z-index: 1000;
+  padding: 0.8rem 8%; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.headm:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-bottom: 1px solid #00f2ff;
+}
+
+.brand-box { display: flex; flex-direction: column; }
+.headm .h1 {
+  font-size: 1.8rem; font-weight: 900; color: #00f2ff;
+  text-transform: uppercase; letter-spacing: 3px; margin: 0;
+}
+.headm .pt { font-size: 0.7rem; color: #ff2d55; text-transform: uppercase; }
+
+.search-container {
+  position: relative; margin: 0 2vw; flex-grow: 0.5; max-width: 250px;
+}
+.search-box {
+  display: flex; align-items: center; background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 20px; padding: 5px 15px;
+}
+.search-box input { background: transparent; border: none; color: #fff; outline: none; width: 100%; }
+
+.nav { display: flex; align-items: center; gap: 1.5rem; }
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown-content {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 8px; min-width: 180px;
+}
+.dropdown:hover .dropdown-content { display: block; animation: slideUp 0.3s ease; }
+.dropdown-content a { padding: 10px 20px; font-size: 0.85rem; display: block; color: #ccc; }
+
+.btn-login {
+  background: transparent; border: 1px solid #00f2ff; color: #00f2ff;
+  padding: 6px 15px; border-radius: 4px; font-weight: bold; cursor: pointer;
+}
+
+/* Container ko relative rakho taki dropdown iske niche hi khule */
+.search-wrapper {
+    position: relative;
+    width: 300px; 
+    margin: 0 15px;
+    z-index: 1100; /* Header ke baki elements se upar */
+}
+
+/* Dropdown list ki styling */
+.suggestion-results {
+    position: absolute;
+    top: 100%; /* Search box ke just niche */
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 0 0 15px 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Jab tak search na karein tab tak hidden */
+}
+
+.suggestion-results.active {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+}
+
+
+
+/* --- MOBILE & TABLET REPLACEMENT (Replace old queries with this) --- */
+@media (max-width: 1024px) {
+  .headm {
+    flex-wrap: wrap; /* Elements ko auto-adjust karega */
+    padding: 10px 5%;
+    justify-content: space-between;
+  }
+
+  .brand-box { width: 50%; }
+  .headm .h1 { font-size: 1.3rem; letter-spacing: 1px; }
+
+  /* Login Button ko top right mein rakha hai name ke side mein */
+  .btn-login { order: 2; margin-left: auto; }
+
+  .search-container {
+    order: 3; /* Search box ko dusri line mein le jayega */
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0 5px;
+  }
+
+  .nav {
+    order: 4; /* Links ko sabse niche */
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 5px;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+  
+  /* Mobile pe dropdown behavior fix */
+  .dropdown-content { left: 50%; transform: translateX(-50%); }
+}
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

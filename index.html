@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Pal | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/body.css?v=2">
+    <link rel="stylesheet" href="css/header.css?v=2">
+    <link rel="stylesheet" href="css/profile.css?v=2">
+    <link rel="stylesheet" href="css/qualification.css?v=2">
+    <link rel="stylesheet" href="css/footer.css?v=2">
+    <link rel="stylesheet" href="css/nots.css">
+</head>
+<body>
+    <div class="cyber-bg"></div>
+
+   <header class="headm">
+    <div class="brand-box">
+        <div class="h1">Vivek Pal</div>
+        <div class="pt">Building Security | Breaking Codes</div>
+    </div>
+
+    <div class="search-wrapper">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search skills or projects..." autocomplete="off">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestion-box" class="suggestion-results"></div>
+</div>
+
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#qualification">Education</a>
+        
+        <div class="dropdown">
+            <a href="#projects" class="dropbtn">Projects <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#palo-alto">Palo Alto Configuration</a>
+                <a href="#captive-portal">Branded Captive Portal</a>
+                <a href="#all-projects">View All Projects</a>
+            </div>
+        </div>
+
+        <a href="https://wa.me/919930907779" target="_blank">Service</a>
+
+        <button class="btn-login" onclick="openLogin()">
+            <i class="fas fa-user-shield"></i> LOGIN
+        </button>
+    </nav>
+</header>
+
+ 
+    <section class="hero-wrapper" id="home">
+    <div class="hero-container"> <div class="photo-box">
+            <div class="photoside-ring"></div>
+            <img src="img/3.png" class="ph" alt="Vivek">
+        </div>
+
+        <div class="info-card-box liquid-glass" id="profileCard">
+            <h2>Hi, I'm <span class="highlight">Vivek Pal</span></h2>
+            <p class="role-text">CCNA & CEH Student</p>
+            <p class="learning-text">Learning <span class="red-highlight">Networking & Cybersecurity</span></p>
+            <p class="last-lin">Passionate about ethical hacking, network security, and real-world cyber attacks.</p>
+            
+            <div class="hire-view-projects">
+                <button class="btn-hire">Hire Me</button>
+                <button class="btn-projects">View Projects</button>
+            </div>
+
+            <div class="liquid-overflow"></div>
+        </div>
+    </div>
+</section>
+
+    <section class="qual-container" id="qualification">
+    <h2 class="qual-title">Educational Journey</h2>
+    <div class="qual-box">
+        <div class="scroll-line" id="lineProgress">
+            <div class="red-marker"></div>
+        </div>
+
+        <div class="qual-item reveal">
+            <div class="dot"></div>
+            <div class="content">
+                <h3>SSC</h3>
+                <p><strong>Board:</strong> Maharashtra State Board</p>
+                <p><strong>Institution:</strong> The Andhra Education Society's High School</p>
+                <p><strong>Status/Year:</strong> Completed (2023)</p>
+            </div>
+        </div>
+
+        <div class="qual-item reveal">
+            <div class="dot"></div>
+            <div class="content">
+                <h3>HSC (Computer Science)</h3>
+                <p><strong>Board:</strong> Maharashtra State Board</p>
+                <p><strong>Institution:</strong> The Andhra Education Society's High School</p>
+                <p><strong>Status/Year:</strong> Completed (2025)</p>
+            </div>
+        </div>
+
+        <div class="qual-item reveal">
+            <div class="dot"></div>
+            <div class="content">
+                <h3>B.Sc. Computer Science</h3>
+                <p><strong>University:</strong> University of Mumbai</p>
+                <p><strong>Institution:</strong> Universal MSG-SGKM College of Arts, Science & Commerce</p>
+                <p><strong>Status/Year:</strong> Pursuing (1st Year Done)</p>
+            </div>
+        </div>
+        <div class="qual-item reveal">
+    <div class="dot"></div>
+    <div class="content training-card">
+        <h3 class="training-title">Network & Security Training</h3>
+        
+        <p class="course-text"><strong>Courses:</strong>CCNA & Palo Alto Firewall Configuration</p>
+        
+        <p class="inst-text"><strong>Institute:</strong> Connecting Cyber Networks (CCN)</p> 
+        
+        <p class="focus-text"><strong>Focus:</strong> Routing, Switching, & Enterprise Security Policies</p>
+        
+        <p class="status-text"><strong>Status:</strong> Course Completed (In-depth Lab Training)</p>
+    </div>
+</div>
+    </div>
+</section>
+<section id="ccna-module-section">
+    <div class="stack-container">
+        <div class="page-layer page-5"></div>
+        <div class="page-layer page-4"></div>
+        <div class="page-layer page-3"></div>
+
+        <div class="page-layer page-2">
+            <p class="associated-title">CISCO CERTIFIED NETWORK ASSOCIATE</p>
+        </div>
+
+        <div class="page-layer main-card">
+            <div class="card-header">
+                <div class="ccna-logo-ring">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <div class="title-text">
+                    <span class="exam-id">EXAM 200-301</span>
+                    <h3>CCNA</h3>
+                </div>
+            </div>
+            
+            <button class="open-btn">
+                OPEN CONSOLE <i class="fas fa-bolt"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+    <footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3 class="highlight">Vivek Pal</h3>
+            <p class="tagline">Building Security | Breaking Codes</p>
+            <p class="footer-bio">Network Security Engineer focusing on robust infrastructure and ethical defense.</p>
+        </div>
+
+        <div class="footer-group">
+            <h4>Quick Navigation</h4>
+            <ul class="footer-links">
+                <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                <li><a href="#qualification"><i class="fa-solid fa-chevron-right"></i> Education</a></li>
+                <li><a href="https://wa.me/919930907779"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-group">
+            <h4>Connect with Me</h4>
+            <div class="cyber-social-grid">
+                <a href="#" class="social-card instagram" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="social-card github" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="#" class="social-card linkedin" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://wa.me/919930907779" class="social-card whatsapp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Vivek Pal. All Rights Reserved.</p>
+        <div class="security-status">
+            <span class="status-dot"></span> System Secured
+        </div>
+    </div>
+</footer>
+
+    <script src="java/background.js"></script>
+    <script src="java/education.js"></script>
+    <script src="java/profile.js"></script>
+    <script src="java/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* --- qualification.css (FINAL CLEAN VERSION) --- */
+
+.qual-container { 
+    padding: 0.5px 5%;
+    background: transparent !important; 
+    position: relative; 
+    min-height: 100vh; 
+    width: 100%;
+    z-index: 1; 
+}
+
+.qual-title { color: #00f2ff; text-align: center; font-size: 2.5rem; margin-bottom: 80px; text-transform: uppercase; }
+
+.qual-box { position: relative; max-width: 1200px; margin: 0 auto; display: block; }
+
+/* Timeline Central Line */
+.scroll-line {
+    position: absolute; left: 50%; top: 0; width: 4px; height: 100%;
+    background: rgba(255, 255, 255, 0.1); transform: translateX(-50%);
+}
+
+.red-marker {
+    position: absolute; left: 50%; top: 0; width: 4px; 
+    background: linear-gradient(to bottom, #00f2ff, #ff2d55);
+    height: 0; transform: translateX(-50%); z-index: 2;
+    transition: height 0.1s linear;
+}
+
+/* Item Base Style */
+.qual-item { 
+    position: relative; 
+    width: 50%; 
+    margin-bottom: 100px; 
+    opacity: 0; 
+    transition: all 0.8s ease-out; 
+    clear: both;
+}
+
+.qual-item.reveal-visible { opacity: 1; transform: translate(0, 0) !important; }
+
+.dot {
+    position: absolute; width: 22px; height: 22px; background: #000;
+    border: 3px solid #00f2ff; border-radius: 50%; z-index: 10;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+/* --- DESKTOP ZIG-ZAG (1024px and up) --- */
+@media (min-width: 1024px) {
+    .qual-item:nth-child(even) { float: right; text-align: left; padding-left: 60px; transform: translateX(50px); }
+    .qual-item:nth-child(even) .dot { left: -13px; top: 10px; }
+
+    .qual-item:nth-child(odd):not(:first-child) { float: left; text-align: right; padding-right: 60px; transform: translateX(-50px); }
+    .qual-item:nth-child(odd):not(:first-child) .dot { right: -13px; top: 10px; }
+}
+
+.qual-box::after { content: ""; display: table; clear: both; }
+
+/* --- Mobile View (Phone ke liye Bulletproof Fix) --- */
+/* --- Mobile Fix for Timeline Line and Dots --- */
+@media (max-width: 768px) {
+    .qual-box {
+        margin-left: 10px !important;
+        padding-left: 0 !important;
+    }
+
+    /* Line ko left side par lock kiya */
+    .scroll-line, .red-marker { 
+        left:1px!important; /* Line ko thoda aur left kiya taaki text ko jagah mile */
+        transform: none !important; 
+        width: 3px !important;
+    }
+
+    .qual-item { 
+        width: 100% !important; 
+        padding-left: 50px !important; /* Text aur line ke beech safe distance */
+        padding-right: 15px !important;
+        text-align: left !important; 
+        margin-bottom: 40px !important;
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+
+    /* Dots ko line ke upar center kiya */
+    .dot { 
+        left:0.001px!important;/*ine 20px par hai, dot width 18px hai, toh 12px perfect center hai */
+        right: auto !important;
+        top: 10px !important; 
+        width: 16px !important;
+        height: 16px !important;
+        transform: none !important;
+    }
+
+    .qual-item.reveal-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
