@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vivekpal756216.github.io/vivek/sitemap.xml
