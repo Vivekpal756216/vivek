@@ -37,7 +37,7 @@
 <body>
     <div class="cyber-bg"></div>
 
-   <header class="headm">
+   <!-- <header class="headm">
     <div class="brand-box">
         <div class="h1">Vivek Pal</div>
         <div class="pt">Building Security | Breaking Codes</div>
@@ -70,8 +70,65 @@
             <i class="fas fa-user-shield"></i> LOGIN
         </button>
     </nav>
-</header>
+</header> -->
+<!-- 
+=======================================================
+  HEADER HTML — REPLACE YOUR EXISTING <header> WITH THIS
+  Search bar is NOW OUTSIDE nav-container-wrapper
+  so it always shows on mobile row 2
+=======================================================
+-->
 
+<header class="headm">
+
+  <!-- ROW 1 LEFT: Logo + Name -->
+  <div class="brand-box">
+    <img src="img/IMP.png" class="header-cyber-logo" alt="NE-Logo">
+    <div class="brand-text-wrapper">
+      <div class="h1">Vivek Pal</div>
+      <div class="pt">Building Security | Breaking Codes</div>
+    </div>
+  </div>
+
+  <!-- ROW 1 RIGHT: Hamburger toggle (mobile only) -->
+  <div class="mobile-nav-toggle" id="mobileMenuBtn">
+    <i class="fas fa-bars close-icon-off"></i>
+    <i class="fas fa-times close-icon-on" style="display: none;"></i>
+  </div>
+
+  <!-- ROW 2: Search bar — OUTSIDE nav-container-wrapper so it's always visible -->
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search skills or projects..." autocomplete="off">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestion-box" class="suggestion-results"></div>
+  </div>
+
+  <!-- NAV PANEL: slides in on mobile, inline on desktop -->
+  <div class="nav-container-wrapper" id="navContainer">
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#qualification">Education</a>
+
+      <div class="dropdown">
+        <a href="#projects" class="dropbtn">Projects <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#palo-alto">Palo Alto Configuration</a>
+          <a href="#captive-portal">Branded Captive Portal</a>
+          <a href="#all-projects">View All Projects</a>
+        </div>
+      </div>
+
+      <a href="https://wa.me/919930907779" target="_blank">Service</a>
+
+      <button class="btn-login" onclick="openLogin()">
+        <i class="fas fa-user-shield"></i> LOGIN
+      </button>
+    </nav>
+  </div>
+
+</header>
  
     <section class="hero-wrapper" id="home">
     <div class="hero-container"> <div class="photo-box">
@@ -225,5 +282,6 @@
     <script src="java/education.js"></script>
     <script src="java/profile.js"></script>
     <script src="java/search.js"></script>
+    <script src="java/menu.js"></script>
 </body>
 </html>

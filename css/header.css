@@ -1,162 +1,395 @@
-/* --- header.css (FINAL CLEAN MOBILE FIX) --- */
+/* ================================================================
+   header.css v7 — Vivek Pal
+   ✅ Header: 85px tall properly
+   ✅ Search bar: grows but capped at 320px max, between brand & nav
+   ✅ LOGIN button: back inside nav, right side same as before
+   ✅ Running multi-color borders on all elements
+   ✅ Logo: no filter
+   ================================================================ */
 
-
-/* Purane icon/button ki height/border hata do aur ye add karo */
-.search-btn {
-    background: transparent; /* Pura background hata do */
-    border: none;            /* Alag se border mat rakho */
-    color: #00f2ff;          /* Sirf neon color rakho */
-    cursor: pointer;
-    font-size: 1.1rem;       /* Size adjust karne ke liye */
-    display: flex;
-    align-items: center;
-    padding-right: 5px;      /* Box ke andar side mein chipka rahe */
-    transition: 0.3s ease;
+@keyframes runBorderBox {
+  0%   { border-color: #00f2ff; box-shadow: 0 0 8px rgba(0,242,255,0.5); }
+  25%  { border-color: #ff2d55; box-shadow: 0 0 8px rgba(255,45,85,0.5); }
+  50%  { border-color: #00ff88; box-shadow: 0 0 8px rgba(0,255,136,0.5); }
+  75%  { border-color: #a855f7; box-shadow: 0 0 8px rgba(168,85,247,0.5); }
+  100% { border-color: #00f2ff; box-shadow: 0 0 8px rgba(0,242,255,0.5); }
 }
 
-/* Hover karne par sirf icon glow karega */
-.search-btn:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #00f2ff;
+@keyframes runBorderSearch {
+  0%   { border-color: #00f2ff; box-shadow: 0 0 12px rgba(0,242,255,0.4); }
+  33%  { border-color: #ff2d55; box-shadow: 0 0 12px rgba(255,45,85,0.4); }
+  66%  { border-color: #00ff88; box-shadow: 0 0 12px rgba(0,255,136,0.4); }
+  100% { border-color: #00f2ff; box-shadow: 0 0 12px rgba(0,242,255,0.4); }
 }
 
-/* Box ko capsule banane ke liye ye check karlo */
-.search-box {
-    border-radius: 50px; 
-    overflow: hidden; /* Taaki icon box ke bahar na nikle */
+@keyframes loginGlow {
+  0%   { box-shadow: 0 0 0 1.5px #00f2ff, 0 0 10px rgba(0,242,255,0.6); }
+  25%  { box-shadow: 0 0 0 1.5px #ff2d55, 0 0 10px rgba(255,45,85,0.6); }
+  50%  { box-shadow: 0 0 0 1.5px #00ff88, 0 0 10px rgba(0,255,136,0.6); }
+  75%  { box-shadow: 0 0 0 1.5px #a855f7, 0 0 10px rgba(168,85,247,0.6); }
+  100% { box-shadow: 0 0 0 1.5px #00f2ff, 0 0 10px rgba(0,242,255,0.6); }
+}
+@keyframes loginColorShift {
+  0%,100% { color: #00f2ff; }
+  25%      { color: #ff2d55; }
+  50%      { color: #00ff88; }
+  75%      { color: #a855f7; }
+}
+@keyframes neonPulse {
+  0%,100% { box-shadow: 0 0 6px rgba(0,242,255,0.4); }
+  50%      { box-shadow: 0 0 18px rgba(0,242,255,0.85); }
+}
+@keyframes slideDown {
+  from { opacity:0; transform:translateY(-8px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
+/* ================================================================
+   BRAND
+   ================================================================ */
+.brand-box {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.brand-text-wrapper { display:flex; flex-direction:column; justify-content:center; }
+.header-cyber-logo {
+  height: 50px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  flex-shrink: 0;
+  filter: none !important;
+  transition: transform 0.3s ease;
+}
+.brand-box:hover .header-cyber-logo { transform: scale(1.06); }
 
-
-
+/* ================================================================
+   HEADER MAIN — DESKTOP
+   Layout: [brand-box]  [search-wrapper]  [nav-container-wrapper]
+   ================================================================ */
 .headm {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-  z-index: 1000;
-  padding: 0.8rem 8%; 
+  background: rgba(7,8,13,0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,242,255,0.12);
+  z-index: 2200;
+  padding: 0 4%;
   display: flex;
-  justify-content: space-between; 
+  flex-wrap: nowrap;
   align-items: center;
-  transition: all 0.4s ease;
+  justify-content: space-between;
+  height: 85px;
+  box-sizing: border-box;
+  gap: 20px;
+  transition: border-color 0.4s ease, background 0.4s ease;
 }
-
 .headm:hover {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border-bottom: 1px solid #00f2ff;
+  background: rgba(7,8,13,0.99) !important;
+  border-bottom-color: rgba(0,242,255,0.35);
 }
-
-.brand-box { display: flex; flex-direction: column; }
 .headm .h1 {
-  font-size: 1.8rem; font-weight: 900; color: #00f2ff;
-  text-transform: uppercase; letter-spacing: 3px; margin: 0;
+  font-size: 1.35rem; font-weight: 900; color: #00f2ff;
+  text-transform: uppercase; letter-spacing: 2.5px;
+  margin: 0; line-height: 1.1;
+  text-shadow: 0 0 14px rgba(0,242,255,0.55);
+  white-space: nowrap;
 }
-.headm .pt { font-size: 0.7rem; color: #ff2d55; text-transform: uppercase; }
+.headm .pt {
+  font-size: 0.62rem; color: #ff2d55;
+  text-transform: uppercase; margin-top: 4px; letter-spacing: 1px;
+  white-space: nowrap;
+}
 
-.search-container {
-  position: relative; margin: 0 2vw; flex-grow: 0.5; max-width: 250px;
+/* ================================================================
+   SEARCH WRAPPER — grows but stays reasonable
+   ================================================================ */
+.search-wrapper {
+  position: relative;
+  /* Grows to fill space between brand and nav, capped at 320px */
+  flex: 1 1 auto;
+  min-width: 140px;
+  max-width: 320px;
+  z-index: 100;
 }
 .search-box {
-  display: flex; align-items: center; background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 20px; padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid #00f2ff;
+  border-radius: 50px;
+  padding: 7px 16px;
+  box-sizing: border-box;
+  animation: runBorderSearch 4s linear infinite;
+  transition: background 0.3s;
 }
-.search-box input { background: transparent; border: none; color: #fff; outline: none; width: 100%; }
+.search-box:focus-within {
+  animation: none;
+  border-color: #00f2ff;
+  background: rgba(0,242,255,0.05);
+  box-shadow: 0 0 22px rgba(0,242,255,0.3);
+}
+.search-box input {
+  background: transparent; border: none; color: #e0fbfc;
+  outline: none; width: 100%; font-size: 0.85rem;
+}
+.search-box input::placeholder { color: rgba(0,242,255,0.38); }
+.search-btn {
+  background: transparent; border: none; color: #00f2ff;
+  cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center;
+  padding: 0; margin-left: 6px; flex-shrink: 0;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.search-btn:hover { color: #fff; text-shadow: 0 0 8px #00f2ff; }
 
-.nav { display: flex; align-items: center; gap: 1.5rem; }
+.suggestion-results {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: rgba(7,8,13,0.97); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,242,255,0.25); border-radius: 12px;
+  max-height: 200px; overflow-y: auto; display: none; z-index: 500;
+}
+.suggestion-results.active { display: block; }
+.suggestion-item {
+  padding: 10px 16px; color: #ccc; cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.88rem; transition: background 0.2s, color 0.2s;
+}
+.suggestion-item:hover { background: rgba(0,242,255,0.08); color: #00f2ff; }
 
-/* Dropdown */
+/* ================================================================
+   NAV CONTAINER — right side, LOGIN button stays here
+   ================================================================ */
+.nav-container-wrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Nav links */
+.nav > a, .nav .dropbtn {
+  color: rgba(180,220,235,0.85);
+  font-size: 0.8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 7px 11px; border-radius: 8px;
+  text-decoration: none; cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.nav > a:hover, .nav .dropbtn:hover {
+  color: #00f2ff;
+  border-color: rgba(0,242,255,0.45);
+  background: rgba(0,242,255,0.06);
+  animation: neonPulse 1.3s ease-in-out infinite;
+}
+
+/* ================================================================
+   LOGIN BUTTON — right side inside nav, multi-color running glow
+   ================================================================ */
+.btn-login {
+  position: relative; overflow: hidden;
+  background: transparent;
+  padding: 7px 16px; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 1.5px; cursor: pointer;
+  text-transform: uppercase; border: none;
+  white-space: nowrap;
+  animation: loginGlow 3s linear infinite, loginColorShift 3s linear infinite;
+  transition: background 0.3s;
+}
+.btn-login::before {
+  content: ''; position: absolute;
+  top: 50%; left: 50%; width: 0; height: 0;
+  background: radial-gradient(circle, rgba(0,242,255,0.25) 0%, transparent 70%);
+  transform: translate(-50%,-50%); border-radius: 50%;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.4s; opacity: 0;
+}
+.btn-login:hover::before { width: 220px; height: 220px; opacity: 1; }
+.btn-login:hover {
+  color: #fff !important; animation: none;
+  box-shadow: 0 0 0 1.5px #00f2ff, 0 0 28px rgba(0,242,255,0.8);
+}
+
+/* ================================================================
+   DROPDOWN
+   ================================================================ */
 .dropdown { position: relative; }
 .dropdown-content {
-  display: none; position: absolute; top: 100%; left: 0;
-  background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
-  border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 8px; min-width: 180px;
+  display: none; position: absolute;
+  top: calc(100% + 8px); left: 0;
+  background: rgba(7,8,13,0.97); backdrop-filter: blur(16px);
+  border: 1px solid rgba(0,242,255,0.2); border-radius: 10px;
+  min-width: 190px; overflow: hidden;
+  animation: slideDown 0.25s ease; z-index: 300;
 }
-.dropdown:hover .dropdown-content { display: block; animation: slideUp 0.3s ease; }
-.dropdown-content a { padding: 10px 20px; font-size: 0.85rem; display: block; color: #ccc; }
-
-.btn-login {
-  background: transparent; border: 1px solid #00f2ff; color: #00f2ff;
-  padding: 6px 15px; border-radius: 4px; font-weight: bold; cursor: pointer;
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content a {
+  display: block; padding: 10px 18px;
+  font-size: 0.83rem; color: #aac; text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.2s, color 0.2s;
 }
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover { background: rgba(0,242,255,0.08); color: #00f2ff; }
 
-/* Container ko relative rakho taki dropdown iske niche hi khule */
-.search-wrapper {
-    position: relative;
-    width: 300px; 
-    margin: 0 15px;
-    z-index: 1100; /* Header ke baki elements se upar */
+/* ================================================================
+   MOBILE TOGGLE
+   ================================================================ */
+.mobile-nav-toggle {
+  display: none;
+  color: #00f2ff; font-size: 1.6rem;
+  cursor: pointer; padding: 4px; flex-shrink: 0;
+  transition: color 0.3s, text-shadow 0.3s;
 }
+.mobile-nav-toggle:hover { color: #fff; text-shadow: 0 0 10px #00f2ff; }
 
-/* Dropdown list ki styling */
-.suggestion-results {
-    position: absolute;
-    top: 100%; /* Search box ke just niche */
-    left: 0;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 242, 255, 0.3);
-    border-radius: 0 0 15px 15px;
-    max-height: 200px;
-    overflow-y: auto;
-    display: none; /* Jab tak search na karein tab tak hidden */
-}
-
-.suggestion-results.active {
-    display: block;
-}
-
-.suggestion-item {
-    padding: 10px 15px;
-    color: #fff;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.9rem;
+/* ================================================================
+   TABLET  1025px – 1280px  — tighten spacing
+   ================================================================ */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .headm { gap: 14px; padding: 0 3%; }
+  .headm .h1 { font-size: 1.15rem; letter-spacing: 1.5px; }
+  .headm .pt { font-size: 0.56rem; }
+  .header-cyber-logo { height: 42px !important; }
+  .search-wrapper { max-width: 260px; }
+  .nav > a, .nav .dropbtn { font-size: 0.75rem; padding: 6px 8px; }
+  .btn-login { font-size: 0.75rem; padding: 6px 12px; }
 }
 
-.suggestion-item:hover {
-    background: rgba(0, 242, 255, 0.1);
-    color: #00f2ff;
-}
-
-
-
-/* --- MOBILE & TABLET REPLACEMENT (Replace old queries with this) --- */
+/* ================================================================
+   MOBILE  ≤ 1024px
+   Row 1: brand (left) + toggle (right)
+   Row 2: search bar full width — ALWAYS VISIBLE
+   Panel: nav slides from right
+   ================================================================ */
 @media (max-width: 1024px) {
+
   .headm {
-    flex-wrap: wrap; /* Elements ko auto-adjust karega */
-    padding: 10px 5%;
-    justify-content: space-between;
+    height: auto !important;
+    min-height: 120px !important;
+    padding: 10px 4% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px 0 !important;
+    background: rgba(7,8,13,0.98) !important;
+    z-index: 2200 !important;
+    box-sizing: border-box !important;
   }
 
-  .brand-box { width: 50%; }
-  .headm .h1 { font-size: 1.3rem; letter-spacing: 1px; }
+  .brand-box    { order: 1 !important; flex: 0 0 auto !important; }
+  .headm .h1    { font-size: 1.05rem !important; letter-spacing: 1px !important; }
+  .headm .pt    { display: none !important; }
+  .header-cyber-logo { height: 36px !important; }
 
-  /* Login Button ko top right mein rakha hai name ke side mein */
-  .btn-login { order: 2; margin-left: auto; }
-
-  .search-container {
-    order: 3; /* Search box ko dusri line mein le jayega */
-    width: 100%;
-    max-width: 100%;
-    margin: 10px 0 5px;
+  .mobile-nav-toggle {
+    display: block !important;
+    order: 2 !important;
+    flex: 0 0 auto !important;
   }
 
-  .nav {
-    order: 4; /* Links ko sabse niche */
-    width: 100%;
-    justify-content: space-around;
-    padding-top: 5px;
-    gap: 10px;
-    font-size: 0.8rem;
+  /* Search bar — row 2, always visible */
+  .search-wrapper {
+    order: 3 !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: unset !important;
+    margin: 0 !important;
+    position: relative !important;
+    top: unset !important; left: unset !important; right: unset !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 2300 !important;
   }
-  
-  /* Mobile pe dropdown behavior fix */
-  .dropdown-content { left: 50%; transform: translateX(-50%); }
+  .search-box {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 14px !important;
+    padding: 10px 16px !important;
+    animation: runBorderSearch 4s linear infinite !important;
+  }
+  .search-box input { font-size: 0.9rem !important; }
+
+  /* Slide panel */
+  .nav-container-wrapper {
+    order: 4 !important;
+    position: fixed !important;
+    top: 120px !important;
+    right: -100% !important;
+    width: 100% !important;
+    height: calc(100vh - 120px) !important;
+    background: rgba(7,9,14,0.97) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 36px 6% !important;
+    transition: right 0.4s cubic-bezier(0.16,1,0.3,1) !important;
+    z-index: 2100 !important;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .nav-container-wrapper.active { right: 0 !important; }
+
+  .nav { flex-direction: column !important; width: 100% !important; gap: 10px !important; }
+
+  .nav > a, .nav .dropbtn {
+    font-size: 1.1rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 14px 0 !important;
+    border-radius: 10px !important;
+    letter-spacing: 1.5px !important;
+    display: block !important;
+    border: 1.5px solid #00f2ff !important;
+    animation: runBorderBox 4s linear infinite !important;
+    background: rgba(0,0,0,0.3) !important;
+    color: #e0fbfc !important;
+  }
+
+  .dropdown { width: 100% !important; text-align: center !important; }
+  .nav .dropbtn { width: 100% !important; box-sizing: border-box !important; }
+
+  .dropdown-content {
+    position: static !important;
+    background: rgba(255,255,255,0.03) !important;
+    border: none !important;
+    border-top: 1px solid rgba(0,242,255,0.1) !important;
+    border-radius: 0 0 10px 10px !important;
+    width: 100%; padding: 4px 0;
+    box-shadow: none !important; animation: none !important;
+    margin-top: -4px;
+  }
+  .dropdown-content a {
+    font-size: 0.95rem !important; color: #88a0aa !important;
+    padding: 9px 0 !important; text-align: center !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  }
+
+  .btn-login {
+    width: 100% !important; max-width: 100% !important;
+    padding: 14px 0 !important; font-size: 1.1rem !important;
+    margin-top: 4px !important; display: block !important;
+    text-align: center !important; border-radius: 10px !important;
+    letter-spacing: 1.5px !important;
+    background: rgba(0,0,0,0.3) !important;
+    animation: loginGlow 3s linear infinite, loginColorShift 3s linear infinite !important;
+  }
 }
-
-@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
