@@ -60,3 +60,36 @@ body {
   background: linear-gradient(to bottom, #00f2ff, #ff2d55);
   border-radius: 10px;
 }
+
+
+
+/* ===== MOBILE SCROLL FIX ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1024px) {
+  /* Blur effects mobile GPU kill karte hain */
+  .liquid-glass,
+  .info-card-box {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Scan line animation band */
+  .scan-line {
+    animation: none !important;
+  }
+
+  /* Touch scroll smooth */
+  section {
+    -webkit-overflow-scrolling: touch;
+  }
+}
