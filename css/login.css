@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0;
@@ -21,16 +21,20 @@ body {
   initial-value: 0deg;
 }
 
+@keyframes rotating {
+  0%   { --a: 0deg; }
+  100% { --a: 360deg; }
+}
+
+/* ── OUTER BOX ── */
 .box {
   position: relative;
   width: 400px;
   height: 200px;
   background: repeating-conic-gradient(
     from var(--a),
-    #ff2770 0%,
-    #ff2770 5%,
-    transparent 5%,
-    transparent 40%,
+    #ff2770 0%, #ff2770 5%,
+    transparent 5%, transparent 40%,
     #ff2770 50%
   );
   filter: drop-shadow(0 15px 50px #000);
@@ -42,31 +46,23 @@ body {
   transition: 0.5s;
 }
 
-.box:hover {
-  width: 450px;
-  height: 500px;
-}
+/* LOGIN hover — original size */
+.box:hover       { width: 450px; height: 500px; }
 
-@keyframes rotating {
-  0% {
-    --a: 0deg;
-  }
-  100% {
-    --a: 360deg;
-  }
-}
+/* REGISTER state */
+.box.reg         { width: 450px; height: 580px; }
+
+/* FORGOT state */
+.box.fgt         { width: 450px; height: 420px; }
 
 .box::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   background: repeating-conic-gradient(
     from var(--a),
-    #45f3ff 0%,
-    #45f3ff 5%,
-    transparent 5%,
-    transparent 40%,
+    #45f3ff 0%, #45f3ff 5%,
+    transparent 5%, transparent 40%,
     #45f3ff 50%
   );
   filter: drop-shadow(0 15px 50px #000);
@@ -84,6 +80,7 @@ body {
   border: 8px solid #25252b;
 }
 
+/* ── INNER LOGIN CARD ── */
 .login {
   position: absolute;
   inset: 60px;
@@ -101,38 +98,57 @@ body {
   overflow: hidden;
 }
 
-.box:hover .login {
-  inset: 40px;
-}
+.box:hover .login,
+.box.reg .login,
+.box.fgt .login { inset: 40px; }
 
-.loginBx {
-  position: relative;
-  display: flex;
+/* ── PANELS ── */
+.panel {
+  display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  transform: translateY(126px);
   gap: 20px;
   width: 70%;
   transition: 0.5s;
 }
+.panel.show { display: flex; }
 
-.box:hover .loginBx {
+/* LOGIN panel: same original translateY(126px) trick */
+#pLogin {
+  transform: translateY(126px);
+}
+.box:hover #pLogin {
   transform: translateY(0px);
 }
 
-.loginBx h2 {
+/* Register & Forgot always at 0 */
+#pReg, #pFgt {
+  transform: translateY(0);
+}
+
+/* ── HEADING ── */
+.panel h2 {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
 }
-
-.loginBx h2 i {
+.panel h2 i.r {
   color: #ff2770;
   text-shadow: 0 0 5px #ff2770, 0 0 30px #ff2770;
 }
+.panel h2 i.c {
+  color: #45f3ff;
+  text-shadow: 0 0 5px #45f3ff, 0 0 30px #45f3ff;
+}
 
-.loginBx input {
+/* ── INPUTS — exactly original ── */
+.panel input[type="text"],
+.panel input[type="password"],
+.panel input[type="email"],
+.panel input[type="tel"] {
   width: 100%;
   padding: 10px 20px;
   outline: none;
@@ -142,36 +158,52 @@ body {
   border: 2px solid #fff;
   border-radius: 30px;
 }
+.panel input::placeholder { color: #999; }
 
-.loginBx input::placeholder {
-  color: #999;
-}
-
-.loginBx input[type="submit"] {
+/* ── SUBMIT / BUTTON — exactly original ── */
+.panel input[type="submit"],
+.panel .btn {
+  width: 100%;
+  padding: 10px 20px;
   background: #45f3ff;
   border: none;
   font-weight: 500;
   color: #111;
   cursor: pointer;
   transition: 0.5s;
+  border-radius: 30px;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
 }
-
-.loginBx input[type="submit"]:hover {
+.panel input[type="submit"]:hover,
+.panel .btn:hover {
   box-shadow: 0 0 10px #45f3ff, 0 0 60px #45f3ff;
 }
 
+/* ── LINKS ROW — exactly original ── */
 .group {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
-
 .group a {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9em;
 }
+.group a.red { color: #ff2770; font-weight: 600; }
+.group a.cy  { color: #45f3ff; font-weight: 600; }
 
-.group a:nth-child(2) {
-  color: #ff2770;
-  font-weight: 600;
+.note {
+  font-size: 0.75em;
+  color: #aaa;
+  text-align: center;
+}
+.ok {
+  font-size: 0.8em;
+  color: #45f3ff;
+  text-shadow: 0 0 8px #45f3ff;
+  display: none;
+  text-align: center;
 }

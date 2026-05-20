@@ -305,15 +305,16 @@
    MOBILE <= 768px
 ================================================================ */
 @media (max-width: 768px) {
-  .red-marker {
-    left: 0.5px !important;
+
+  .qual-container { padding: 60px 4% 60px; }
+  .qual-title { font-size: 1.8rem; margin-bottom: 50px; letter-spacing: 2px; }
+
+  /* Line left side pe */
+  .scroll-line {
+    left: 20px !important;
     transform: none !important;
     width: 2px !important;
-    transition: height 0.2s ease-out; /* mobile pe thoda aur smooth */
-    will-change: height;
   }
-}
-
   .red-marker {
   position: absolute;
   left: 50%;
