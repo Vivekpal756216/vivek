@@ -1,31 +1,36 @@
-/* --- education.js --- MOBILE FIXED */
+/* ================================================================
+   education.js — Vivek Pal | FINAL FIXED
+   ✅ Education scroll smooth — reveal-visible REMOVE nahi hogi
+   ✅ Red line fill sahi
+   ✅ Mobile aur Desktop dono pe sahi
+   ================================================================ */
+
 window.addEventListener('scroll', () => {
-  const items   = document.querySelectorAll('.qual-item');
-  const redLine = document.querySelector('.red-marker');
-  const box     = document.querySelector('.qual-box');
+  const items    = document.querySelectorAll('.qual-item');
+  const redLine  = document.querySelector('.red-marker');
+  const box      = document.querySelector('.qual-box');
   const isMobile = window.innerWidth <= 768;
 
-  /* 1. Card reveal */
+  /* ── Card reveal ──
+     FIX: reveal-visible SIRF ADD karo, REMOVE MAT KARO
+     Isse scroll pe items gayab nahi honge — atakna band */
   items.forEach(item => {
     const itemTop      = item.getBoundingClientRect().top;
     const triggerPoint = isMobile
-      ? window.innerHeight * 0.88
+      ? window.innerHeight * 0.92   /* mobile pe thoda jaldi dikhao */
       : window.innerHeight * 0.85;
 
     if (itemTop < triggerPoint) {
       item.classList.add('reveal-visible');
-    } else {
-      item.classList.remove('reveal-visible');
+      /* INTENTIONALLY: classList.remove NAHI — ek baar dikhne ke baad rakho */
     }
   });
 
-  /* 2. Red line fill */
+  /* ── Red line fill ── */
   if (box && redLine) {
-    const boxRect = box.getBoundingClientRect();
-
-    /* Mobile pe line thodi jaldi chalti hai content ke saath */
+    const boxRect  = box.getBoundingClientRect();
     const scrollPos = isMobile
-      ? window.innerHeight * 0.75
+      ? window.innerHeight * 0.78
       : window.innerHeight / 1.6;
 
     let progress = (scrollPos - boxRect.top) / boxRect.height * 100;
@@ -36,5 +41,5 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* Page load pe ek baar bhi chalao — top pe jo items hain vo immediately dikhein */
+/* Page load pe ek baar chalao */
 window.dispatchEvent(new Event('scroll'));

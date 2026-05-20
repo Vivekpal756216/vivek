@@ -1,6 +1,9 @@
 /* ================================================================
-   qualification.css — Vivek Pal —
-================================================================ */
+   qualification.css — Vivek Pal | FINAL FIXED
+   ✅ Sab colors aur animations same hain
+   ✅ Mobile dot animations slow — blink band
+   ✅ Education scroll smooth
+   ================================================================ */
 
 /* ----------------------------------------------------------------
    CONTAINER
@@ -55,7 +58,7 @@
 }
 
 /* ----------------------------------------------------------------
-   CENTER LINE (desktop)
+   CENTER LINE
 ---------------------------------------------------------------- */
 .scroll-line {
   position: absolute;
@@ -261,10 +264,7 @@
     padding-right: 0;
     transform: translateX(60px);
   }
-  .qual-item:nth-child(even) .dot {
-    left: -10px;
-    right: auto;
-  }
+  .qual-item:nth-child(even) .dot { left: -10px; right: auto; }
 
   .qual-item:nth-child(odd):not(:first-child) {
     float: left;
@@ -273,10 +273,7 @@
     padding-left: 0;
     transform: translateX(-60px);
   }
-  .qual-item:nth-child(odd):not(:first-child) .dot {
-    right: -10px;
-    left: auto;
-  }
+  .qual-item:nth-child(odd):not(:first-child) .dot { right: -10px; left: auto; }
 
   .qual-item.reveal-visible { transform: translateX(0) !important; }
   .qual-box::after { content: ""; display: table; clear: both; }
@@ -305,19 +302,14 @@
 }
 
 /* ================================================================
-   MOBILE <= 768px 
-   
-   Line: left: 20px (screen ke bilkul left se thoda andar)
-   Dot:  left: 11px → dot center = 11 + 10 = 21px = line ke center pe ✅
-   Card: padding-left: 52px → content line ke daaye side se shuru ✅
-   Items: float NONE, width 100%, display block — overlap nahi hoga ✅
+   MOBILE <= 768px
 ================================================================ */
 @media (max-width: 768px) {
 
   .qual-container { padding: 60px 4% 60px; }
   .qual-title { font-size: 1.8rem; margin-bottom: 50px; letter-spacing: 2px; }
 
-  /* Line bilkul left side pe */
+  /* Line left side pe */
   .scroll-line {
     left: 20px !important;
     transform: none !important;
@@ -329,7 +321,7 @@
     width: 2px !important;
   }
 
-  /* Sabhi items — NO FLOAT, full width, ek ke niche ek */
+  /* Sabhi items — float none, full width */
   .qual-item,
   .qual-item:nth-child(even),
   .qual-item:nth-child(odd),
@@ -339,16 +331,13 @@
     clear: both !important;
     display: block !important;
     text-align: left !important;
-    padding-left: 52px !important;   /* line + dot ke liye jagah */
+    padding-left: 52px !important;
     padding-right: 12px !important;
     margin-bottom: 32px !important;
-    /* animation start position */
     transform: translateY(30px) !important;
   }
 
-  /* Dot: line (20px) ke center pe */
-  /* line center = 20px + 1px = 21px from left of qual-box */
-  /* dot left = 21px - 10px (half dot) = 11px */
+  /* Dot position fix */
   .qual-item .dot,
   .qual-item:nth-child(even) .dot,
   .qual-item:nth-child(odd) .dot,
@@ -359,6 +348,15 @@
     width: 20px !important;
     height: 20px !important;
   }
+
+  /* Dot glow slow karo mobile pe — blink nahi karega */
+  .qual-item:nth-child(2) .dot { animation-duration: 4s !important; }
+  .qual-item:nth-child(3) .dot { animation-duration: 4s !important; }
+  .qual-item:nth-child(4) .dot { animation-duration: 4s !important; }
+  .qual-item:nth-child(5) .dot { animation-duration: 4s !important; }
+
+  /* cardShimmer mobile pe off — scroll jerky ka reason */
+  .content::after { animation: none !important; }
 
   /* Revealed state */
   .qual-item.reveal-visible,
