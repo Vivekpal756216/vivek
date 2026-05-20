@@ -1,164 +1,371 @@
-/* --- profile.css (FINAL CLEAN FIX) --- */
+:root {
+  --photo-size: 310px;
+  --card-width: 860px;
+  --card-max-default: 980px;
+}
 
 .hero-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    min-height: 100vh;
-    padding: 100px 5% 50px;
-    position: relative;
-    overflow: hidden; /* Bahar jane wala content hide karne ke liye */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 160px 4% 160px;
+  position: relative;
+}
+.hero-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,242,255,0.06) 0%, transparent 70%);
+  top: 8%; left: 3%;
+  border-radius: 50%;
+  animation: floatBlob 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.hero-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,45,85,0.05) 0%, transparent 70%);
+  bottom: 8%; right: 3%;
+  border-radius: 50%;
+  animation: floatBlob 11s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+}
+@keyframes floatBlob {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(28px,-28px) scale(1.12); }
 }
 
+/* Column layout — photo upar, card niche */
 .hero-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 1100px;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+  max-width: min(92vw, 900px);
+  position: relative;
+  z-index: 1;
 }
 
-/* --- Photo Section --- */
+/* ================================================================
+   PHOTO BOX
+================================================================ */
 .photo-box {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  width: var(--photo-size) !important;
+  height: var(--photo-size) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  flex-shrink: 0;
+  /* JS se transition set hoga */
+  animation: photoEntry 1s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes photoEntry {
+  from { opacity: 0; transform: translateY(50px) scale(0.88); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .photoside-ring {
-    position: absolute;
-    width: 100%; height: 100%;
-    border: 3px solid transparent;
-    border-top: 3px solid #00f2ff;
-    border-bottom: 3px solid #ff2d55;
-    border-radius: 50%;
-    animation: rotateRing 5s linear infinite;
+  position: absolute;
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  border: 2.5px solid transparent;
+  border-top: 2.5px solid #00f2ff;
+  border-bottom: 2.5px solid #ff2d55;
+  border-radius: 50%;
+  animation: rotateRing 5s linear infinite;
+}
+.photo-box::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 68px);
+  height: calc(100% + 68px);
+  border: 1.5px dashed rgba(0,242,255,0.2);
+  border-radius: 50%;
+  animation: rotateRing 14s linear infinite reverse;
+}
+.photo-box::after {
+  content: '';
+  position: absolute;
+  width: calc(100% + 104px);
+  height: calc(100% + 104px);
+  border: 1px solid transparent;
+  border-top: 1.5px solid rgba(168,85,247,0.35);
+  border-bottom: 1.5px solid rgba(0,255,136,0.25);
+  border-radius: 50%;
+  animation: rotateRing 9s linear infinite;
+}
+@keyframes rotateRing { to { transform: rotate(360deg); } }
+
+.photo-box .ph, .ph {
+  width: 338px !important;
+  height: 338px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 4px solid #050508 !important;
+  box-shadow:
+    0 0 0 2px rgba(0,242,255,0.22),
+    0 0 28px rgba(0,242,255,0.38),
+    0 0 65px rgba(0,242,255,0.1) !important;
+  transition: box-shadow 0.5s ease, transform 0.5s ease !important;
+  display: block !important;
+}
+.photo-box:hover .ph {
+  box-shadow:
+    0 0 0 2px rgba(0,242,255,0.6),
+    0 0 40px rgba(0,242,255,0.7),
+    0 0 80px rgba(0,242,255,0.2) !important;
+  transform: scale(1.05) !important;
 }
 
-@keyframes rotateRing { 
-    0% { transform: rotate(0deg); } 
-    100% { transform: rotate(360deg); } 
+/* ================================================================
+   INFO CARD BOX
+================================================================ */
+.info-card-box {
+  width: 100%;
+  max-width: var(--card-max-default);
+  text-align: center;
+  position: relative;
+  z-index: 4;
+  animation: cardEntry 1s cubic-bezier(0.22,1,0.36,1) 0.15s both;
 }
-
-.ph {
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #000;
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+@keyframes cardEntry {
+  from { opacity: 0; transform: translateY(45px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-/* --- Glass & Liquid Info Card --- */
-
 
 .liquid-glass {
-    background: rgba(246, 12, 12, 0.005)!important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgb(0, 13, 255);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 600px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 30px rgb(179, 253, 19);
-    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 4;
+  background: rgba(3,3,12,0.75) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 1px solid rgba(0,242,255,0.15) !important;
+  border-radius: 24px !important;
+  padding: 34px 32px 30px !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,242,255,0.05),
+    0 30px 80px rgba(0,0,0,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.04) !important;
+}
+@property --ba { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 26px;
+  background: conic-gradient(
+    from var(--ba),
+    #00f2ff 0deg, transparent 55deg,
+    #ff2d55 120deg, transparent 175deg,
+    #a855f7 240deg, transparent 295deg,
+    #00f2ff 360deg
+  );
+  z-index: -1;
+  opacity: 0.5;
+  animation: borderSpin 5s linear infinite;
+}
+@keyframes borderSpin { to { --ba: 360deg; } }
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 23px;
+  background: rgba(3,3,12,0.98);
+  z-index: -1;
+}
+.liquid-overflow {
+  position: absolute;
+  top: 0; left: -90%;
+  width: 50%; height: 100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(0,242,255,0.04) 50%, transparent 70%);
+  animation: shimmer 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+@keyframes shimmer { 0% { left: -90%; } 100% { left: 170%; } }
+
+.liquid-glass h2 {
+  font-size: 2.1rem; color: #fff; margin: 0 0 6px;
+  font-weight: 800; letter-spacing: 0.3px; line-height: 1.25;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+.typewriter-wrap { display: inline-block; vertical-align: baseline; }
+.typewriter-text {
+  color: #00f2ff;
+  text-shadow: 0 0 18px rgba(0,242,255,0.6), 0 0 40px rgba(0,242,255,0.2);
+  display: inline;
+}
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px; height: 0.82em; background: #00f2ff;
+  margin-left: 3px; vertical-align: middle;
+  position: relative; top: -1px; border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0,242,255,1), 0 0 22px rgba(0,242,255,0.5);
+  animation: cursorBlink 0.72s step-end infinite;
+}
+@keyframes cursorBlink { 0%,100%{opacity:1;}50%{opacity:0;} }
+.role-text {
+  font-size: 0.85rem; color: #00f2ff; font-weight: 700;
+  margin: 0 0 12px; letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0,242,255,0.4);
+  text-transform: uppercase; position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.45s both;
+}
+.goal-badges {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  justify-content: center; margin-bottom: 16px;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.55s both;
+}
+.goal-badge {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 20px; border: 1px solid;
+}
+.goal-badge.cyan  { color:#00f2ff; border-color:rgba(0,242,255,0.35); background:rgba(0,242,255,0.07); }
+.goal-badge.red   { color:#ff2d55; border-color:rgba(255,45,85,0.35);  background:rgba(255,45,85,0.07); }
+.goal-badge.purp  { color:#a855f7; border-color:rgba(168,85,247,0.35); background:rgba(168,85,247,0.07); }
+.card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,242,255,0.2), transparent);
+  margin: 12px 0; position: relative; z-index: 1;
+}
+.cert-section-label {
+  font-size: 0.68rem; letter-spacing: 2.5px; color: #555;
+  text-transform: uppercase; margin-bottom: 10px;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.65s both;
+}
+.cert-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 7px; margin-bottom: 14px;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.7s both;
+}
+.cert-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 11px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  text-align: left;
+  transition: border-color 0.3s, background 0.3s;
+}
+.cert-item:hover { border-color:rgba(0,242,255,0.2); background:rgba(0,242,255,0.05); }
+.cert-icon { font-size: 1rem; flex-shrink: 0; }
+.cert-info { display: flex; flex-direction: column; min-width: 0; }
+.cert-name { font-size:0.72rem; font-weight:700; color:#ddd; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cert-status { font-size:0.62rem; letter-spacing:0.5px; margin-top:1px; }
+.cert-status.done     { color: #00e676; }
+.cert-status.progress { color: #ffa726; }
+.cert-status.upcoming { color: #666; }
+.skills-row {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  justify-content: center; margin-bottom: 14px;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.8s ease 0.8s both;
+}
+.skill-chip {
+  font-size:0.68rem; font-weight:600; color:#aaa;
+  padding:4px 10px; border-radius:6px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  letter-spacing:0.5px; transition: all 0.3s;
+}
+.skill-chip:hover { color:#00f2ff; border-color:rgba(0,242,255,0.3); background:rgba(0,242,255,0.06); }
+.last-lin {
+  color:#666; font-size:0.85rem; line-height:1.7;
+  margin:0 0 20px; position:relative; z-index:1;
+  animation: fadeInUp 0.8s ease 0.9s both;
+}
+.hire-view-projects {
+  display:flex; gap:12px; justify-content:center;
+  flex-wrap:wrap; position:relative; z-index:1;
+  animation: fadeInUp 0.8s ease 1s both;
+}
+.btn-hire {
+  background: linear-gradient(135deg, #00f2ff, #0088aa);
+  border:none; color:#000; padding:12px 28px; cursor:pointer;
+  border-radius:30px; font-weight:900; font-size:0.82rem;
+  letter-spacing:1.5px; text-transform:uppercase;
+  transition: all 0.35s ease;
+  box-shadow: 0 5px 22px rgba(0,242,255,0.35);
+}
+.btn-hire:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,242,255,0.6); }
+.btn-projects {
+  background:transparent; border:1.5px solid #ff2d55;
+  color:#ff2d55; padding:12px 28px; cursor:pointer;
+  border-radius:30px; font-size:0.82rem; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  transition: all 0.35s ease;
+}
+.btn-projects:hover { background:#ff2d55; color:#fff; transform:translateY(-4px); box-shadow:0 12px 38px rgba(255,45,85,0.5); }
+.learning-text { display: none; }
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
-/* --- Text Styling --- */
-.liquid-glass h2 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
-.highlight { color: #00f2ff; text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
-.role-text { font-size: 1.3rem; color: #00f2ff; font-weight: bold; margin-bottom: 10px; }
-.red-highlight { color: #ff2d55; font-weight: bold; }
-.learning-text { margin-bottom: 15px; color: #fff; }
-.last-lin { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; }
-
-/* --- Buttons --- */
-.hire-view-projects { display: flex; gap: 15px; justify-content: center; }
-
-.btn-hire { 
-    background: #00f2ff; 
-    border: none; 
-    color: #000; 
-    padding: 10px 25px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    font-weight: bold; 
-    transition: 0.3s;
-}
-.btn-hire:hover { background: #fff; box-shadow: 0 0 20px #00f2ff; }
-
-.btn-projects { 
-    background: transparent; 
-    border: 1px solid #ff2d55; 
-    color: #ff2d55; 
-    padding: 10px 25px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    transition: 0.3s;
-}
-.btn-projects:hover { 
-    background: #ff2d55; 
-    color: #fff; 
-    box-shadow: 0 0 15px #ff2d55; 
+/* ================================================================
+   DESKTOP >= 1025px
+================================================================ */
+@media (min-width: 1025px) {
+  .hero-wrapper {
+    padding: 220px 4% 230px;
+    align-items: center;
+  }
+  .hero-container {
+    max-width: min(92vw, 1050px);
+    gap: 85px;
+    /* overflow visible taaki rings clip na ho */
+    overflow: visible;
+  }
 }
 
-/* --- Mobile View Fix --- */
-/* --- Final Mobile Text & Layout Shrink --- */
-/* --- Final Text Size & Position Fix --- */
-@media (max-width: 1024px) {
+/* ================================================================
+   TABLET 769px – 1024px
+================================================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-wrapper { padding: 200px 4% 60px; }
+  .hero-container { max-width: min(94vw, 720px); gap: 65px; }
+  .photo-box { width: 250px !important; height: 250px !important; }
+  .photo-box .ph, .ph { width: 220px !important; height: 220px !important; }
+  .liquid-glass h2 { font-size: 1.9rem; }
+}
 
-  /* Photo aur Card ke beech thoda extra gap taaki text upar aa sake */
-  .photo-box {
-    width: 150px !important;
-    height: 150px !important;
-    margin-bottom: -20px !important; /* Overlap kam kiya taaki text ko jagah mile */
-  }
+/* ================================================================
+   MOBILE <= 768px
+================================================================ */
+@media (max-width: 768px) {
+  .hero-wrapper { padding: 145px 3% 50px; align-items: flex-start; }
+  .hero-container { max-width: 100%; gap: 28px; }
+  .photo-box { width: 210px !important; height: 210px !important; }
+  .photo-box .ph, .ph { width: 184px !important; height: 184px !important; }
+  .info-card-box { max-width: 100% !important; width: 100% !important; }
+  .liquid-glass { padding: 22px 16px 20px !important; border-radius: 18px !important; }
+  .liquid-glass h2 { font-size: 1.65rem !important; }
+  .role-text { font-size: 0.78rem !important; letter-spacing: 1.5px !important; }
+  .cert-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+  .last-lin { font-size: 0.8rem !important; }
+  .btn-hire, .btn-projects { padding: 10px 22px !important; font-size: 0.78rem !important; }
+}
 
-  .ph {
-    width: 130px !important;
-    height: 130px !important;
-  }
-
-  /* --- Vivek Pal Text Fix --- */
-  .liquid-glass h1 {
-    font-size: 1rem !important; /* Size aur kam kiya */
-    margin-top: 15px !important; /* Photo se chipka hua hatane ke liye */
-    margin-bottom: 2px !important;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-  }
-
-  /* CCNA & CEH Section */
-  .liquid-glass h3 {
-    font-size: 0.75rem !important; /* Size chota kiya */
-    margin-bottom: 8px !important;
-    color: #00f2ff;
-  }
-
-  /* Description Paragraph */
-  .liquid-glass p {
-    font-size: 0.65rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 12px !important;
-  }
-
-  /* Buttons Adjustment */
-  .hero-btns {
-    margin-top: 5px !important;
-    gap: 8px !important;
-  }
-
-  .hero-btns button, .hero-btns a {
-    padding: 5px 10px !important;
-    font-size: 0.6rem !important;
-  }
+/* ================================================================
+   CHHOTE MOBILE <= 420px
+================================================================ */
+@media (max-width: 420px) {
+  .hero-wrapper { padding: 185px 2.5% 40px; }
+  .hero-container { gap: 65px; }
+  .photo-box { width: 190px !important; height: 190px !important; }
+  .photo-box .ph, .ph { width: 165px !important; height: 165px !important; }
+  .liquid-glass { padding: 18px 12px 16px !important; border-radius: 16px !important; }
+  .liquid-glass h2 { font-size: 1.4rem !important; }
+  .cert-grid { grid-template-columns: 1fr !important; }
+  .goal-badges { gap: 5px !important; }
+  .goal-badge { font-size: 0.66rem !important; padding: 3px 8px !important; }
 }

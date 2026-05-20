@@ -1,97 +1,382 @@
-/* --- qualification.css (FINAL CLEAN VERSION) --- */
+/* ================================================================
+   qualification.css — Vivek Pal —
+================================================================ */
 
-.qual-container { 
-    padding: 0.5px 5%;
-    background: transparent !important; 
-    position: relative; 
-    min-height: 100vh; 
-    width: 100%;
-    z-index: 1; 
+/* ----------------------------------------------------------------
+   CONTAINER
+---------------------------------------------------------------- */
+.qual-container {
+  padding: 80px 5% 100px;
+  background: transparent !important;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 1;
 }
 
-.qual-title { color: #00f2ff; text-align: center; font-size: 2.5rem; margin-bottom: 80px; text-transform: uppercase; }
+.qual-title {
+  color: #00f2ff;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 90px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 30px rgba(0,242,255,0.5);
+  position: relative;
+  animation: titlePulse 3s ease-in-out infinite;
+}
+@keyframes titlePulse {
+  0%,100% { text-shadow: 0 0 20px rgba(0,242,255,0.4); }
+  50%      { text-shadow: 0 0 60px rgba(0,242,255,0.9), 0 0 100px rgba(0,242,255,0.3); }
+}
+.qual-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #00f2ff, #ff2d55, #a855f7, #00ff88);
+  margin: 16px auto 0;
+  border-radius: 2px;
+  animation: lineExpand 2s ease-in-out infinite alternate;
+}
+@keyframes lineExpand {
+  from { width: 60px; }
+  to   { width: 150px; }
+}
 
-.qual-box { position: relative; max-width: 1200px; margin: 0 auto; display: block; }
+/* ----------------------------------------------------------------
+   QUAL BOX
+---------------------------------------------------------------- */
+.qual-box {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: block;
+}
 
-/* Timeline Central Line */
+/* ----------------------------------------------------------------
+   CENTER LINE (desktop)
+---------------------------------------------------------------- */
 .scroll-line {
-    position: absolute; left: 50%; top: 0; width: 4px; height: 100%;
-    background: rgba(255, 255, 255, 0.1); transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: rgba(255,255,255,0.07);
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .red-marker {
-    position: absolute; left: 50%; top: 0; width: 4px; 
-    background: linear-gradient(to bottom, #00f2ff, #ff2d55);
-    height: 0; transform: translateX(-50%); z-index: 2;
-    transition: height 0.1s linear;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #00f2ff, #a855f7, #ff2d55, #00ff88);
+  height: 0;
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0,242,255,0.5);
+  transition: height 0.08s linear;
 }
 
-/* Item Base Style */
-.qual-item { 
-    position: relative; 
-    width: 50%; 
-    margin-bottom: 100px; 
-    opacity: 0; 
-    transition: all 0.8s ease-out; 
-    clear: both;
+/* ----------------------------------------------------------------
+   QUAL ITEM BASE
+---------------------------------------------------------------- */
+.qual-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 70px;
+  opacity: 0;
+  transition: opacity 0.7s ease,
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  clear: both;
 }
 
-.qual-item.reveal-visible { opacity: 1; transform: translate(0, 0) !important; }
+.qual-item.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
 
+/* ----------------------------------------------------------------
+   DOT
+---------------------------------------------------------------- */
 .dot {
-    position: absolute; width: 22px; height: 22px; background: #000;
-    border: 3px solid #00f2ff; border-radius: 50%; z-index: 10;
-    box-shadow: 0 0 10px #00f2ff;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #0a0a0f;
+  border: 3px solid #00f2ff;
+  border-radius: 50%;
+  z-index: 20;
+  transition: transform 0.3s ease;
+  top: 22px;
+}
+.qual-item:hover .dot {
+  transform: scale(1.6) !important;
 }
 
-/* --- DESKTOP ZIG-ZAG (1024px and up) --- */
-@media (min-width: 1024px) {
-    .qual-item:nth-child(even) { float: right; text-align: left; padding-left: 60px; transform: translateX(50px); }
-    .qual-item:nth-child(even) .dot { left: -13px; top: 10px; }
-
-    .qual-item:nth-child(odd):not(:first-child) { float: left; text-align: right; padding-right: 60px; transform: translateX(-50px); }
-    .qual-item:nth-child(odd):not(:first-child) .dot { right: -13px; top: 10px; }
+/* ----------------------------------------------------------------
+   CONTENT CARD
+---------------------------------------------------------------- */
+.content {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 24px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+.content:hover {
+  transform: translateY(-7px) scale(1.01);
+}
+.content::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 55%; height: 100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
+  animation: cardShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes cardShimmer {
+  0%   { left: -80%; }
+  100% { left: 160%; }
 }
 
-.qual-box::after { content: ""; display: table; clear: both; }
+/* ----------------------------------------------------------------
+   CARD COLORS
+---------------------------------------------------------------- */
+.qual-item:nth-child(2) .content {
+  border-color: rgba(0,242,255,0.2);
+  box-shadow: 0 4px 25px rgba(0,242,255,0.07);
+}
+.qual-item:nth-child(2) .content:hover {
+  border-color: rgba(0,242,255,0.65);
+  box-shadow: 0 18px 60px rgba(0,242,255,0.28);
+}
+.qual-item:nth-child(2) h3 { color: #00f2ff; text-shadow: 0 0 15px rgba(0,242,255,0.5); }
+.qual-item:nth-child(2) .dot {
+  border-color: #00f2ff;
+  box-shadow: 0 0 10px #00f2ff;
+  animation: dotCyan 2s ease-in-out infinite;
+}
+@keyframes dotCyan {
+  0%,100% { box-shadow: 0 0 8px #00f2ff, 0 0 16px rgba(0,242,255,0.4); }
+  50%      { box-shadow: 0 0 22px #00f2ff, 0 0 45px rgba(0,242,255,0.8); }
+}
 
-/* --- Mobile View (Phone ke liye Bulletproof Fix) --- */
-/* --- Mobile Fix for Timeline Line and Dots --- */
+.qual-item:nth-child(3) .content {
+  border-color: rgba(255,45,85,0.2);
+  box-shadow: 0 4px 25px rgba(255,45,85,0.07);
+}
+.qual-item:nth-child(3) .content:hover {
+  border-color: rgba(255,45,85,0.65);
+  box-shadow: 0 18px 60px rgba(255,45,85,0.28);
+}
+.qual-item:nth-child(3) h3 { color: #ff2d55; text-shadow: 0 0 15px rgba(255,45,85,0.5); }
+.qual-item:nth-child(3) .dot {
+  border-color: #ff2d55;
+  animation: dotPink 2s ease-in-out infinite;
+}
+@keyframes dotPink {
+  0%,100% { box-shadow: 0 0 8px #ff2d55, 0 0 16px rgba(255,45,85,0.4); }
+  50%      { box-shadow: 0 0 22px #ff2d55, 0 0 45px rgba(255,45,85,0.8); }
+}
+
+.qual-item:nth-child(4) .content {
+  border-color: rgba(168,85,247,0.2);
+  box-shadow: 0 4px 25px rgba(168,85,247,0.07);
+}
+.qual-item:nth-child(4) .content:hover {
+  border-color: rgba(168,85,247,0.65);
+  box-shadow: 0 18px 60px rgba(168,85,247,0.28);
+}
+.qual-item:nth-child(4) h3 { color: #a855f7; text-shadow: 0 0 15px rgba(168,85,247,0.5); }
+.qual-item:nth-child(4) .dot {
+  border-color: #a855f7;
+  animation: dotPurple 2s ease-in-out infinite;
+}
+@keyframes dotPurple {
+  0%,100% { box-shadow: 0 0 8px #a855f7, 0 0 16px rgba(168,85,247,0.4); }
+  50%      { box-shadow: 0 0 22px #a855f7, 0 0 45px rgba(168,85,247,0.8); }
+}
+
+.qual-item:nth-child(5) .content {
+  border-color: rgba(0,255,136,0.2);
+  box-shadow: 0 4px 25px rgba(0,255,136,0.07);
+}
+.qual-item:nth-child(5) .content:hover {
+  border-color: rgba(0,255,136,0.65);
+  box-shadow: 0 18px 60px rgba(0,255,136,0.28);
+}
+.qual-item:nth-child(5) h3 { color: #00ff88; text-shadow: 0 0 15px rgba(0,255,136,0.5); }
+.qual-item:nth-child(5) .dot {
+  border-color: #00ff88;
+  animation: dotGreen 2s ease-in-out infinite;
+}
+@keyframes dotGreen {
+  0%,100% { box-shadow: 0 0 8px #00ff88, 0 0 16px rgba(0,255,136,0.4); }
+  50%      { box-shadow: 0 0 22px #00ff88, 0 0 45px rgba(0,255,136,0.8); }
+}
+
+/* ----------------------------------------------------------------
+   TEXT
+---------------------------------------------------------------- */
+.content h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.content p,
+.course-text, .inst-text, .focus-text, .status-text {
+  color: #999;
+  font-size: 0.87rem;
+  line-height: 1.85;
+  margin-bottom: 3px;
+}
+.content p strong {
+  color: rgba(255,255,255,0.72);
+  font-weight: 600;
+}
+.training-title { font-size: 1.05rem !important; }
+
+/* ================================================================
+   DESKTOP >= 1025px
+================================================================ */
+@media (min-width: 1025px) {
+  .qual-item { width: 50%; }
+
+  .qual-item:nth-child(even) {
+    float: right;
+    text-align: left;
+    padding-left: 44px;
+    padding-right: 0;
+    transform: translateX(60px);
+  }
+  .qual-item:nth-child(even) .dot {
+    left: -10px;
+    right: auto;
+  }
+
+  .qual-item:nth-child(odd):not(:first-child) {
+    float: left;
+    text-align: right;
+    padding-right: 44px;
+    padding-left: 0;
+    transform: translateX(-60px);
+  }
+  .qual-item:nth-child(odd):not(:first-child) .dot {
+    right: -10px;
+    left: auto;
+  }
+
+  .qual-item.reveal-visible { transform: translateX(0) !important; }
+  .qual-box::after { content: ""; display: table; clear: both; }
+}
+
+/* ================================================================
+   TABLET 769–1024
+================================================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .qual-item { width: 50%; }
+
+  .qual-item:nth-child(even) {
+    float: right; padding-left: 36px; padding-right: 0;
+    transform: translateX(50px);
+  }
+  .qual-item:nth-child(even) .dot { left: -10px; right: auto; }
+
+  .qual-item:nth-child(odd):not(:first-child) {
+    float: left; padding-right: 36px; padding-left: 0; text-align: right;
+    transform: translateX(-50px);
+  }
+  .qual-item:nth-child(odd):not(:first-child) .dot { right: -10px; left: auto; }
+
+  .qual-item.reveal-visible { transform: translateX(0) !important; }
+  .qual-box::after { content: ""; display: table; clear: both; }
+}
+
+/* ================================================================
+   MOBILE <= 768px 
+   
+   Line: left: 20px (screen ke bilkul left se thoda andar)
+   Dot:  left: 11px → dot center = 11 + 10 = 21px = line ke center pe ✅
+   Card: padding-left: 52px → content line ke daaye side se shuru ✅
+   Items: float NONE, width 100%, display block — overlap nahi hoga ✅
+================================================================ */
 @media (max-width: 768px) {
-    .qual-box {
-        margin-left: 10px !important;
-        padding-left: 0 !important;
-    }
 
-    /* Line ko left side par lock kiya */
-    .scroll-line, .red-marker { 
-        left:1px!important; /* Line ko thoda aur left kiya taaki text ko jagah mile */
-        transform: none !important; 
-        width: 3px !important;
-    }
+  .qual-container { padding: 60px 4% 60px; }
+  .qual-title { font-size: 1.8rem; margin-bottom: 50px; letter-spacing: 2px; }
 
-    .qual-item { 
-        width: 100% !important; 
-        padding-left: 50px !important; /* Text aur line ke beech safe distance */
-        padding-right: 15px !important;
-        text-align: left !important; 
-        margin-bottom: 40px !important;
-        opacity: 0; 
-        transform: translateY(20px); 
-    }
+  /* Line bilkul left side pe */
+  .scroll-line {
+    left: 20px !important;
+    transform: none !important;
+    width: 2px !important;
+  }
+  .red-marker {
+    left: 0.5px !important;
+    transform: none !important;
+    width: 2px !important;
+  }
 
-    /* Dots ko line ke upar center kiya */
-    .dot { 
-        left:0.001px!important;/*ine 20px par hai, dot width 18px hai, toh 12px perfect center hai */
-        right: auto !important;
-        top: 10px !important; 
-        width: 16px !important;
-        height: 16px !important;
-        transform: none !important;
-    }
+  /* Sabhi items — NO FLOAT, full width, ek ke niche ek */
+  .qual-item,
+  .qual-item:nth-child(even),
+  .qual-item:nth-child(odd),
+  .qual-item:nth-child(odd):not(:first-child) {
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
+    display: block !important;
+    text-align: left !important;
+    padding-left: 52px !important;   /* line + dot ke liye jagah */
+    padding-right: 12px !important;
+    margin-bottom: 32px !important;
+    /* animation start position */
+    transform: translateY(30px) !important;
+  }
 
-    .qual-item.reveal-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  /* Dot: line (20px) ke center pe */
+  /* line center = 20px + 1px = 21px from left of qual-box */
+  /* dot left = 21px - 10px (half dot) = 11px */
+  .qual-item .dot,
+  .qual-item:nth-child(even) .dot,
+  .qual-item:nth-child(odd) .dot,
+  .qual-item:nth-child(odd):not(:first-child) .dot {
+    left: 11px !important;
+    right: auto !important;
+    top: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Revealed state */
+  .qual-item.reveal-visible,
+  .qual-item:nth-child(even).reveal-visible,
+  .qual-item:nth-child(odd).reveal-visible,
+  .qual-item:nth-child(odd):not(:first-child).reveal-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .content { padding: 18px 16px !important; border-radius: 12px !important; }
+  .content h3 { font-size: 0.95rem !important; }
+  .content p, .course-text, .inst-text, .focus-text, .status-text {
+    font-size: 0.8rem !important; line-height: 1.65 !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .qual-title { font-size: 1.4rem !important; }
+  .content { padding: 14px !important; }
 }
