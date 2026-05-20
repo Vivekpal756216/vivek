@@ -63,7 +63,13 @@ body {
 
 
 
-/* ===== MOBILE SCROLL FIX ===== */
+/* ================================================================
+   MOBILE SCROLL FIX — body.css ke END mein paste karo
+   ✅ Scroll smooth
+   ✅ Atakna band
+   ✅ Backdrop blur mobile pe off (GPU killer tha)
+   ================================================================ */
+
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -76,20 +82,46 @@ body {
 }
 
 @media (max-width: 1024px) {
-  /* Blur effects mobile GPU kill karte hain */
+
+  /* Backdrop blur mobile GPU kill karta tha — band karo */
   .liquid-glass,
   .info-card-box {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  /* Scan line animation band */
-  .scan-line {
+  /* Scan line + heavy animations band */
+  .scan-line,
+  .liquid-overflow,
+  .photoside-ring {
     animation: none !important;
   }
 
-  /* Touch scroll smooth */
-  section {
+  /* Smooth touch scroll sabhi sections pe */
+  section,
+  .hero-wrapper,
+  .qual-container,
+  .hero-container {
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* GPU acceleration sirf photo pe — baaki pe nahi */
+  .photo-box .ph {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Transition speed kam karo — scroll smooth lagega */
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.2s !important;
+    animation-duration: 0.3s !important;
+  }
+
+  /* Scan line aur stack animations off */
+  .stack-container .page-layer {
+    animation: none !important;
+    transform: none !important;
   }
 }
