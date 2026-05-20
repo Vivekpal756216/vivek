@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glowing Animated Login Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #252432;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotating {
+  0%   { --a: 0deg; }
+  100% { --a: 360deg; }
+}
+
+/* ── OUTER BOX ── */
+.box {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #ff2770 0%, #ff2770 5%,
+    transparent 5%, transparent 40%,
+    #ff2770 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  animation: rotating 4s linear infinite;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+/* LOGIN hover — original size */
+.box:hover       { width: 450px; height: 500px; }
+
+/* REGISTER state */
+.box.reg         { width: 450px; height: 580px; }
+
+/* FORGOT state */
+.box.fgt         { width: 450px; height: 420px; }
+
+.box::before {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #45f3ff 0%, #45f3ff 5%,
+    transparent 5%, transparent 40%,
+    #45f3ff 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  animation: rotating 4s linear infinite;
+  animation-delay: -1s;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #2d2d39;
+  border-radius: 15px;
+  border: 8px solid #25252b;
+}
+
+/* ── INNER LOGIN CARD ── */
+.login {
+  position: absolute;
+  inset: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  transition: 0.5s;
+  color: #fff;
+  overflow: hidden;
+}
+
+.box:hover .login,
+.box.reg .login,
+.box.fgt .login { inset: 40px; }
+
+/* ── PANELS ── */
+.panel {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 70%;
+  transition: 0.5s;
+}
+.panel.show { display: flex; }
+
+/* LOGIN panel: same original translateY(126px) trick */
+#pLogin {
+  transform: translateY(126px);
+}
+.box:hover #pLogin {
+  transform: translateY(0px);
+}
+
+/* Register & Forgot always at 0 */
+#pReg, #pFgt {
+  transform: translateY(0);
+}
+
+/* ── HEADING ── */
+.panel h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+.panel h2 i.r {
+  color: #ff2770;
+  text-shadow: 0 0 5px #ff2770, 0 0 30px #ff2770;
+}
+.panel h2 i.c {
+  color: #45f3ff;
+  text-shadow: 0 0 5px #45f3ff, 0 0 30px #45f3ff;
+}
+
+/* ── INPUTS — exactly original ── */
+.panel input[type="text"],
+.panel input[type="password"],
+.panel input[type="email"],
+.panel input[type="tel"] {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-size: 1em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #fff;
+  border-radius: 30px;
+}
+.panel input::placeholder { color: #999; }
+
+/* ── SUBMIT / BUTTON — exactly original ── */
+.panel input[type="submit"],
+.panel .btn {
+  width: 100%;
+  padding: 10px 20px;
+  background: #45f3ff;
+  border: none;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 30px;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+}
+.panel input[type="submit"]:hover,
+.panel .btn:hover {
+  box-shadow: 0 0 10px #45f3ff, 0 0 60px #45f3ff;
+}
+
+/* ── LINKS ROW — exactly original ── */
+.group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.group a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.group a.red { color: #ff2770; font-weight: 600; }
+.group a.cy  { color: #45f3ff; font-weight: 600; }
+
+.note {
+  font-size: 0.75em;
+  color: #aaa;
+  text-align: center;
+}
+.ok {
+  font-size: 0.8em;
+  color: #45f3ff;
+  text-shadow: 0 0 8px #45f3ff;
+  display: none;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="box" id="box">
+  <div class="login">
+
+    <!-- LOGIN -->
+    <div class="panel show" id="pLogin">
+      <h2>
+        <i class="fa-solid fa-right-to-bracket r"></i>
+        Login
+        <i class="fa-solid fa-heart r"></i>
+      </h2>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <input type="submit" value="Sign in">
+      <div class="group">
+        <a href="#" id="aFgt">Forgot Password</a>
+        <a href="#" class="red" id="aReg">Sign up</a>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="panel" id="pReg">
+      <h2>
+        <i class="fa-solid fa-user-plus c"></i>
+        Register
+        <i class="fa-solid fa-star c"></i>
+      </h2>
+      <input type="text" placeholder="Full Name">
+      <input type="tel" placeholder="Phone Number">
+      <input type="email" placeholder="Email Address">
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+      <button class="btn" id="bReg">Register Now</button>
+      <div class="group">
+        <span class="note">Already have an account?</span>
+        <a href="#" class="cy" id="aB1">Login</a>
+      </div>
+    </div>
+
+    <!-- FORGOT PASSWORD -->
+    <div class="panel" id="pFgt">
+      <h2>
+        <i class="fa-solid fa-key c"></i>
+        Forgot
+        <i class="fa-solid fa-unlock c"></i>
+      </h2>
+      <p class="note">Registered email enter karein,<br>reset link bhejenge.</p>
+      <input type="email" id="fEmail" placeholder="Enter your Email">
+      <button class="btn" id="bRst">Send Reset Link</button>
+      <p class="ok" id="fMsg">✓ Reset link bhej diya!</p>
+      <div class="group" style="justify-content:center;">
+        <a href="#" class="cy" id="aB2">← Back to Login</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var box = document.getElementById('box');
+var cur = 'login';
+
+/* hover only works on login panel */
+box.addEventListener('mouseenter', function() {
+  if (cur === 'login') box.classList.add('hov');
+});
+box.addEventListener('mouseleave', function() {
+  if (cur === 'login') box.classList.remove('hov');
+});
+
+function go(p) {
+  ['pLogin','pReg','pFgt'].forEach(function(id) {
+    document.getElementById(id).classList.remove('show');
+  });
+  box.classList.remove('hov','reg','fgt');
+  cur = p;
+
+  if (p === 'login') {
+    document.getElementById('pLogin').classList.add('show');
+  } else if (p === 'reg') {
+    document.getElementById('pReg').classList.add('show');
+    box.classList.add('reg');
+  } else if (p === 'fgt') {
+    document.getElementById('pFgt').classList.add('show');
+    box.classList.add('fgt');
+    document.getElementById('fMsg').style.display = 'none';
+    document.getElementById('fEmail').value = '';
+  }
+}
+
+document.getElementById('aReg').onclick = function(e){ e.preventDefault(); go('reg'); };
+document.getElementById('aFgt').onclick = function(e){ e.preventDefault(); go('fgt'); };
+document.getElementById('aB1').onclick  = function(e){ e.preventDefault(); go('login'); };
+document.getElementById('aB2').onclick  = function(e){ e.preventDefault(); go('login'); };
+document.getElementById('bReg').onclick = function(){ alert('Registered! 🎉'); go('login'); };
+document.getElementById('bRst').onclick = function(){
+  var v = document.getElementById('fEmail').value.trim();
+  if (!v) { alert('Email enter karein!'); return; }
+  document.getElementById('fMsg').style.display = 'block';
+};
+</script>
+</body>
+</html>
