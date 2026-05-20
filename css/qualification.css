@@ -305,21 +305,34 @@
    MOBILE <= 768px
 ================================================================ */
 @media (max-width: 768px) {
-
-  .qual-container { padding: 60px 4% 60px; }
-  .qual-title { font-size: 1.8rem; margin-bottom: 50px; letter-spacing: 2px; }
-
-  /* Line left side pe */
-  .scroll-line {
-    left: 20px !important;
-    transform: none !important;
-    width: 2px !important;
-  }
   .red-marker {
     left: 0.5px !important;
     transform: none !important;
     width: 2px !important;
+    transition: height 0.2s ease-out; /* mobile pe thoda aur smooth */
+    will-change: height;
   }
+}
+
+  .red-marker {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #00f2ff, #a855f7, #ff2d55, #00ff88);
+  height: 0;
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0,242,255,0.5);
+ 
+  /* ── MAIN FIX ──
+     0.08s → 0.15s aur ease-out
+     Mobile pe scroll events kam aate hain
+     toh transition thodi lambi rakho — line smooth dikhegi */
+  transition: height 0.15s ease-out;
+  will-change: height; /* GPU ko batao ye animate hoga */
+}
 
   /* Sabhi items — float none, full width */
   .qual-item,

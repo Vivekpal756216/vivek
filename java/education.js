@@ -1,34 +1,33 @@
 /* ================================================================
-   education.js — Vivek Pal | FINAL FIXED
-   ✅ Education scroll smooth — reveal-visible REMOVE nahi hogi
-   ✅ Red line fill sahi
-   ✅ Mobile aur Desktop dono pe sahi
+   education.js — Vivek Pal | RED LINE SMOOTH FIX
+   ✅ Red line smooth chalegi — atak nahi karegi
+   ✅ requestAnimationFrame use kiya — mobile pe smooth
+   ✅ reveal-visible remove nahi hogi
    ================================================================ */
 
-window.addEventListener('scroll', () => {
+let ticking = false;
+
+function updateScroll() {
   const items    = document.querySelectorAll('.qual-item');
   const redLine  = document.querySelector('.red-marker');
   const box      = document.querySelector('.qual-box');
   const isMobile = window.innerWidth <= 768;
 
-  /* ── Card reveal ──
-     FIX: reveal-visible SIRF ADD karo, REMOVE MAT KARO
-     Isse scroll pe items gayab nahi honge — atakna band */
+  /* ── Card reveal — sirf add karo, remove mat karo ── */
   items.forEach(item => {
     const itemTop      = item.getBoundingClientRect().top;
     const triggerPoint = isMobile
-      ? window.innerHeight * 0.92   /* mobile pe thoda jaldi dikhao */
+      ? window.innerHeight * 0.92
       : window.innerHeight * 0.85;
 
     if (itemTop < triggerPoint) {
       item.classList.add('reveal-visible');
-      /* INTENTIONALLY: classList.remove NAHI — ek baar dikhne ke baad rakho */
     }
   });
 
-  /* ── Red line fill ── */
+  /* ── Red line smooth fill ── */
   if (box && redLine) {
-    const boxRect  = box.getBoundingClientRect();
+    const boxRect   = box.getBoundingClientRect();
     const scrollPos = isMobile
       ? window.innerHeight * 0.78
       : window.innerHeight / 1.6;
@@ -39,7 +38,18 @@ window.addEventListener('scroll', () => {
 
     redLine.style.height = progress + '%';
   }
-});
 
-/* Page load pe ek baar chalao */
-window.dispatchEvent(new Event('scroll'));
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  /* requestAnimationFrame — scroll event baar baar fire nahi hoga
+     GPU ke saath sync hoga — line smooth chalegi */
+  if (!ticking) {
+    requestAnimationFrame(updateScroll);
+    ticking = true;
+  }
+}, { passive: true }); /* passive: true — scroll block nahi hoga */
+
+/* Page load pe ek baar */
+updateScroll();
