@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0b0d13;
+  min-height: 100vh;
+  padding: 30px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* ══════════════════════════
+   FULL SCREEN GRID PAGE
+══════════════════════════ */
+.page {
+  width: 100%;
+  max-width: 100%; /* Pure screen me spread hone ke liye */
+  margin: 0 auto;
+  display: grid;
+  /* Automatically responsive: screen badi hogi to grid automatic columns bana dega */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* ══════════════════════════
+   CODE BOX WITH NEON GLOW
+══════════════════════════ */
+.code-box {
+  background: #141520;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e2135;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  /* NEON SIDE GLOW */
+  box-shadow:
+    -4px 0 12px 2px #00f5ff45,
+     4px 0 12px 2px #8338ec45,
+     0   6px 0 #0c0d18,
+     0  10px 0 #090a14,
+     0  14px 22px rgba(0,0,0,0.7);
+}
+
+/* Neon left border animation */
+.code-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #00f5ff, #8338ec, #ff006e);
+  border-radius: 10px 0 0 10px;
+  animation: neonPulse 2s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+/* Neon right border animation */
+.code-box::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff006e, #8338ec, #00f5ff);
+  border-radius: 0 10px 10px 0;
+  animation: neonPulse 2s ease-in-out infinite alternate-reverse;
+  z-index: 5;
+}
+
+@keyframes neonPulse {
+  0%   { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* ── PHOTO CONTAINER (Side gaps ke liye) ── */
+.img-container {
+  padding: 15px; /* Photo ke charo taraf background gap dikhane ke liye */
+  background: #0f101a; /* Dark background jo image ko pop karega */
+  border-bottom: 1px solid #1e2135;
+}
+
+/* ── IMAGE CONFIGURATION ── */
+.code-box .box-img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain; /* Contain se diagram stretch nahi hoga aur pura dikhega */
+  background: #141520;
+  border-radius: 6px;
+  display: block;
+}
+
+/* ── SPECIAL SPAN FOR BOX 1 TO TAKE MORE SPACE (Optional) ── */
+.img-box {
+  grid-column: span 1; /* Agar image wale box ko bada rakhna ho to use grid properties se tweak kar sakte ho */
+}
+
+/* ── BOX BODY ── */
+.box-body {
+  padding: 18px 22px;
+  color: #7a8099;
+  font-size: 13px;
+  line-height: 1.8;
+  flex-grow: 1;
+}
+
+.box-body h3 {
+  color: #00f5ff;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ── */
+@media (max-width: 768px) {
+  body { padding: 15px; }
+  .page { grid-template-columns: 1fr; } /* Mobile par ek ke niche ek single column automatic ho jayega */
+  .code-box .box-img { height: 200px; }
+}

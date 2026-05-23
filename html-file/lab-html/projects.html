@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vivek Pal | Labs & Projects Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<link rel="stylesheet" href="../../css/header.css?v=2">
+<link rel="stylesheet" href="../../css/lab-css/projects.css" />
+</head>
+<body>
+
+<div class="cyber-bg"></div>
+
+<header class="headm">
+  <div class="brand-box">
+    <img src="../../img/IMP.png" class="header-cyber-logo" alt="NE-Logo">
+    <div class="brand-text-wrapper">
+      <div class="h1">Vivek Pal</div>
+      <div class="pt">Building Security | Breaking Codes</div>
+    </div>
+  </div>
+  <div class="mobile-nav-toggle" id="mobileMenuBtn">
+    <i class="fas fa-bars close-icon-off"></i>
+    <i class="fas fa-times close-icon-on" style="display: none;"></i>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search skills or projects..." autocomplete="off">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestion-box"></div>
+  </div>
+  <div class="nav-container-wrapper" id="navContainer">
+    <nav class="nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#qualification">Education</a>
+      <div class="dropdown">
+        <a href="projects.html" class="dropbtn">Projects <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="palo-alto.html">Palo Alto </a>
+          <a href="#captive-portal">Branded Captive Portal</a>
+          <a href="#all-projects">View All Projects</a>
+        </div>
+      </div>
+      <a href="https://wa.me/919930907779" target="_blank">Service</a>
+      <a href="../../html-file/login.html">
+        <button class="btn-login"><i class="fas fa-user-shield"></i> LOGIN</button>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="projects-main" id="all-projects">
+
+  <div class="proj-hero">
+    <div class="proj-hero-bg"></div>
+    <div class="proj-hero-content">
+      <div class="hero-tag">
+        <span class="status-blink"></span>
+        LIVE LAB CONSOLE
+      </div>
+      <h1 class="proj-hero-title">
+        <span class="neon-text">Security</span> Projects
+      </h1>
+      <p class="proj-hero-sub">Real-world labs, enterprise configs & ethical hacking builds.</p>
+    </div>
+    <div class="hero-grid-overlay"></div>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+
+    <!-- ── PALO ALTO ── -->
+    <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="firewall" id="palo-alto">
+        <div class="card-glow palo-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap palo-icon">
+            <i class="fas fa-fire-flame-curved"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Palo Alto NGFW</span>
+            <span class="running-badge"><span class="run-dot"></span>RUNNING</span>
+          </div>
+        </div>
+        <h2 class="card-title">Enterprise Firewall <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          PAN-OS deployment with zone-based policies, App-ID, SSL decryption, and GlobalProtect VPN.
+          Built a <strong>custom Captive Portal</strong> — branded login page with CSS/JS injected into Palo Alto's auth flow.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">Zone Policies</span>
+          <span class="ftag">App-ID</span>
+          <span class="ftag">SSL Decrypt</span>
+          <span class="ftag special-tag">🎨 Captive Portal</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-fire"></i> PAN-OS 11.x</span>
+          <span class="tech-chip"><i class="fas fa-network-wired"></i> HA Pair</span>
+        </div>
+        <div class="card-footer-row">
+          <a href="palo-alto.html"><button class="view-btn" onclick="openProject('palo-alto')">
+            <i class="fas fa-terminal"></i> Open Lab
+          </button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CCNA ── -->
+    <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="network" id="ccna-lab">
+        <div class="card-glow ccna-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap ccna-icon">
+            <i class="fas fa-sitemap"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Cisco Certified Network Associate</span>
+            <span class="running-badge"><span class="run-dot"></span>BUILDING</span>
+          </div>
+        </div>
+        <h2 class="card-title">Network Infrastructure <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          Three-tier topology with OSPF routing, VLAN segmentation, EtherChannel bonding,
+          HSRP redundancy, and NAT/PAT on Cisco IOS. Actively practicing for CCNA exam.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">OSPF Area 0</span>
+          <span class="ftag">VLAN + Trunking</span>
+          <span class="ftag">EtherChannel</span>
+          <span class="ftag">NAT/PAT</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-server"></i> Cisco IOS</span>
+          <span class="tech-chip"><i class="fas fa-diagram-project"></i> GNS3 / PT</span>
+          <span class="tech-chip"><i class="fas fa-shield"></i> ACL Rules</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn" onclick="openProject('ccna-lab')">
+            <i class="fas fa-terminal"></i> Open Lab
+          </button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- ── CHECK POINT ── -->
+    <!-- <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="firewall" id="checkpoint-lab">
+        <div class="card-glow cp-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap cp-icon">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Check Point Next-Gen Firewall</span>
+            <span class="running-badge"><span class="run-dot"></span>RUNNING</span>
+          </div>
+        </div>
+        <h2 class="card-title">Check Point Security <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          SmartConsole setup with policy layers, IPS blade, App Control, and Site-to-Site VPN
+          between two gateways. Currently practicing R81.20 for Check Point certification.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">Policy Layers</span>
+          <span class="ftag">IPS Blade</span>
+          <span class="ftag">S2S VPN</span>
+          <span class="ftag">SmartLog</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-shield"></i> R81.20</span>
+          <span class="tech-chip"><i class="fas fa-building"></i> SmartConsole</span>
+          <span class="tech-chip"><i class="fas fa-eye"></i> Threat Intel</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn" onclick="openProject('checkpoint-lab')">
+            <i class="fas fa-terminal"></i> Open Lab
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- ── CEH ── -->
+    <!-- <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="ethical" id="ceh-lab">
+        <div class="card-glow ceh-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap ceh-icon">
+            <i class="fas fa-skull-crossbones"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Certified Ethical Hacker</span>
+            <span class="running-badge progress-badge"><span class="run-dot orange-dot"></span>BUILDING</span>
+          </div>
+        </div>
+        <h2 class="card-title">Ethical Hacking <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          Attack & defense lab on Kali Linux — recon, exploitation, password cracking,
+          and post-exploitation on isolated VMs. CEH certification in progress.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">Nmap Recon</span>
+          <span class="ftag">Metasploit</span>
+          <span class="ftag">SQLmap</span>
+          <span class="ftag">Wireshark</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-dragon"></i> Kali Linux</span>
+          <span class="tech-chip"><i class="fas fa-bug"></i> Metasploit</span>
+          <span class="tech-chip"><i class="fas fa-bomb"></i> VulnHub VMs</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn" onclick="openProject('ceh-lab')">
+            <i class="fas fa-terminal"></i> Open Lab
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- ── PYTHON + AI ── -->
+    <div class="card-wrap">
+      <div class="proj-card glass-card ai-card" data-category="ai" id="python-ai-lab">
+        <div class="card-glow ai-glow"></div>
+        <div class="ai-badge-float">
+          <i class="fas fa-robot"></i> AI POWERED
+        </div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap ai-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Python + AI Security</span>
+            <span class="running-badge progress-badge"><span class="run-dot orange-dot"></span>BUILDING</span>
+          </div>
+        </div>
+        <h2 class="card-title">AI Security Management <span class="accent">System</span></h2>
+        <p class="card-desc">
+          A full-scale AI-powered security management platform built with Python + Claude API.
+          Handles network log analysis, threat detection, and automated policy recommendations —
+          one of my biggest projects so far.
+        </p>
+        <div class="ai-highlight-box">
+          <i class="fas fa-sparkles"></i>
+          <span>AI handles: Log Analysis · Threat Detection · Rule Suggestions · Auto-Reports · Anomaly Alerts</span>
+        </div>
+        <div class="feature-tags">
+          <span class="ftag ai-ftag">🤖 Claude API</span>
+          <span class="ftag ai-ftag">🧠 ML Models</span>
+          <span class="ftag">Log Parsing</span>
+          <span class="ftag">Anomaly Detection</span>
+          <span class="ftag">Auto Reports</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-python"></i> Python 3.x</span>
+          <span class="tech-chip"><i class="fas fa-robot"></i> Claude API</span>
+          <span class="tech-chip"><i class="fas fa-chart-line"></i> Pandas / Sklearn</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn" onclick="openProject('python-ai-lab')">
+            <i class="fas fa-robot"></i> Open Lab
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DIGITAL FORENSICS ── -->
+    <!-- <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="forensic" id="forensic-lab">
+        <div class="card-glow forensic-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap forensic-icon">
+            <i class="fas fa-magnifying-glass-chart"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Digital Forensics & Investigation</span>
+            <span class="running-badge upcoming-badge"><span class="run-dot blue-dot"></span>UPCOMING</span>
+          </div>
+        </div>
+        <h2 class="card-title">Digital Forensics <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          Disk imaging, memory forensics, and file carving on compromised systems.
+          Planning to cover Autopsy, Volatility, and FTK Imager — coming soon.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">Disk Imaging</span>
+          <span class="ftag">Memory Dump</span>
+          <span class="ftag">File Carving</span>
+          <span class="ftag">Autopsy</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-hard-drive"></i> FTK Imager</span>
+          <span class="tech-chip"><i class="fas fa-memory"></i> Volatility 3</span>
+          <span class="tech-chip"><i class="fas fa-file-magnifying-glass"></i> Sleuth Kit</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn locked-btn" onclick="openProject('forensic-lab')">
+            <i class="fas fa-clock"></i> Coming Soon
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- ── OSCP ── -->
+    <!-- <div class="card-wrap">
+      <div class="proj-card glass-card" data-category="ethical" id="oscp-lab">
+        <div class="card-glow oscp-glow"></div>
+        <div class="card-header-row">
+          <div class="card-icon-wrap oscp-icon">
+            <i class="fas fa-crosshairs"></i>
+          </div>
+          <div class="card-meta">
+            <span class="course-label">Offensive Security Certified Professional</span>
+            <span class="running-badge upcoming-badge"><span class="run-dot blue-dot"></span>UPCOMING</span>
+          </div>
+        </div>
+        <h2 class="card-title">OSCP Penetration <span class="accent">Lab</span></h2>
+        <p class="card-desc">
+          Offensive Security exam prep — buffer overflow, privilege escalation,
+          Active Directory attacks, and CTF-style simulations on HackTheBox & TryHackMe.
+        </p>
+        <div class="feature-tags">
+          <span class="ftag">Buffer Overflow</span>
+          <span class="ftag">Priv Esc</span>
+          <span class="ftag">Active Directory</span>
+          <span class="ftag">HackTheBox</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip"><i class="fas fa-terminal"></i> Kali / Parrot</span>
+          <span class="tech-chip"><i class="fas fa-flag"></i> CTF Labs</span>
+          <span class="tech-chip"><i class="fas fa-windows"></i> AD Attacks</span>
+        </div>
+        <div class="card-footer-row">
+          <button class="view-btn locked-btn" onclick="openProject('oscp-lab')">
+            <i class="fas fa-clock"></i> Coming Soon
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+  
+  <!-- /projects-grid -->
+
+  <div class="bottom-note">
+    <i class="fas fa-circle-info"></i>
+    Labs actively being built. Click <strong>Open Lab</strong> to view configs, tasks & solutions.
+    <span class="ai-note"><i class="fas fa-robot"></i> Python AI project built with Claude API for security automation.</span>
+  </div>
+
+</main>
+
+<div class="toast-notif" id="toastNotif">
+  <i class="fas fa-clock"></i>
+  <span id="toastMsg">Lab coming soon!</span>
+</div>
+
+<script src="../../java/labs/lab-config.js"></script>
+<script src="../../java/labs/projects.js"></script>
+<script src="../../java/menu.js"></script>
+<script src="../../java/search.js"></script>
+</body>
+</html>

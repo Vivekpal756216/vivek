@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Network Security Labs | Vivek Pal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/header.css">
+  <link rel="stylesheet" href="../../css/lab-css/palo-alto.css">
+</head>
+<body>
+
+<header class="headm">
+  <div class="brand-box">
+    <img src="../../img/IMP.png" class="header-cyber-logo" alt="NE-Logo">
+    <div class="brand-text-wrapper">
+      <div class="h1">Vivek Pal</div>
+      <div class="pt">Building Security | Breaking Codes</div>
+    </div>
+  </div>
+
+  <div class="mobile-nav-toggle" id="mobileMenuBtn">
+    <i class="fas fa-bars close-icon-off"></i>
+    <i class="fas fa-times close-icon-on" style="display: none;"></i>
+  </div>
+
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search skills or projects..." autocomplete="off">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestion-box" class="suggestion-results"></div>
+  </div>
+
+  <div class="nav-container-wrapper" id="navContainer">
+    <nav class="nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#qualification">Education</a>
+      <div class="dropdown">
+        <a href="../../html-file/lab-html/projects.html" class="dropbtn">Projects <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#palo-alto">Palo Alto Configuration</a>
+          <a href="#captive-portal">Branded Captive Portal</a>
+          <a href="#all-projects">View All Projects</a>
+        </div>
+      </div>
+      <a href="https://wa.me/919930907779" target="_blank">Service</a>
+      <a href="html-file/login.html">
+        <button class="btn-login" onclick="openLogin()"><i class="fas fa-user-shield"></i> LOGIN</button>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<div class="dashboard-container">
+  
+  <!-- LEFT SIDEBAR: PROJECTS ONLY -->
+  <aside class="sidebar-panel">
+    <div class="sidebar-header">
+      <h2><i class="fa-solid fa-folder-open"></i> LAB PROJECTS</h2>
+    </div>
+    <ul class="project-list">
+      <li class="project-item active" onclick="switchProject('PaloAltoLab')">Project 01: Palo Alto Security Lab</li>
+      <li class="project-item" onclick="switchProject('ActiveActive')">Project 02: Active-Active Failover</li>
+      <li class="project-item" onclick="switchProject('CaptivePortal')">Project 03: Captive Portal Design</li>
+      <li class="project-item" onclick="switchProject('CoreNetLab')">Project 04: Core Enterprise Layout</li>
+      
+      <!-- ➕ JAB BHI NAYA PROJECT ADD KARNA HO, ISKE NICHE AISI LI LINE DAAL DENA: -->
+      <!-- <li class="project-item" onclick="switchProject('NayaProjectKey')">Project 05: Naya Lab Name</li> -->
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT AREA (PERFECT CENTER ALIGNED) -->
+  <main class="main-content">
+    <div class="box-3d">
+      
+      <!-- TOP PROJECT TOPOLOGY IMAGE (🔄 JAVASCRIPT SE DYNAMIC BADALNE KE LIYE ID ADD KI HAI) -->
+      <div class="box-img-wrapper">
+        <img id="project-topology-display" class="box-top-img" src="../../img/PROJECT.png" alt="Project Topology Diagram">
+      </div>
+
+      <!-- PROJECT HEADERS (CENTER TEXT) -->
+      <div class="box-body">
+        <h3 id="project-title-display" class="project-main-title">Palo Alto Security Lab</h3>
+        <p id="project-desc-display" class="project-main-desc">Loading structural mappings...</p>
+      </div>
+
+      <!-- INTERACTION CONTROL BUTTONS -->
+      <div class="box-footer-buttons">
+        <button class="tab-btn btn-neon-blue panel-active" id="btn-task" onclick="showTaskSectionOnly()">
+          <i class="fa-solid fa-eye"></i> View Tasks / Objectives
+        </button>
+        <button class="tab-btn btn-neon-purple" id="btn-config" onclick="showConfigSectionOnly()">
+          <i class="fa-solid fa-sliders"></i> Device Configuration Panel
+        </button>
+      </div>
+
+      <!-- 1. TASK DETAILS & SCREENSHOT SECTION (VISIBLE BY DEFAULT ON BOOT) -->
+      <div id="task-view-container" class="center-content-panel">
+        <div class="panel-inner-content">
+          <h4 class="view-title"><i class="fa-solid fa-list-check"></i> SELECT TASK OBJECTIVE</h4>
+          
+          <!-- Horizontal Task Picker Grid -->
+          <div class="task-grid-selector" id="task-grid-buttons">
+            <!-- JS dynamically inserts buttons here -->
+          </div>
+
+          <!-- Selected Task Description Data -->
+          <div class="task-display-box">
+            <h5 id="active-task-title">Task 01: System Validation</h5>
+            <p id="task-text-content" class="neon-text-alert">Click on a task number above to preview data.</p>
+          </div>
+
+          <!-- VERIFICATION OUTPUT SCREENSHOT AREA -->
+          <div class="screenshot-container">
+            <h4 class="view-title"><i class="fa-solid fa-image"></i> VERIFICATION OUTPUT SCREENSHOT</h4>
+            <div class="screenshot-frame">
+              <img id="task-screenshot-display" src="img/screenshots/default.png" alt="Select Task to Load Output Screenshot">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CONFIGURATION ENGINE (MUTUALLY EXCLUSIVE - AUTOMATICALLY HIDES TASK) -->
+      <div id="config-view-container" class="hidden-panel center-content-panel">
+        <div class="config-inner-layout">
+          
+          <div class="internal-device-bar">
+            <h5><i class="fa-solid fa-server"></i> TARGET NODE SELECTOR (40+ AVAILABLE DEVS)</h5>
+            <div class="device-chips" id="device-chips-container"></div>
+          </div>
+
+          <div class="terminal-screen">
+            <div class="config-header">
+              <span id="current-device-title">Device: Not Selected</span>
+              <div class="action-buttons">
+                <button class="btn-action" onclick="copyConfig()"><i class="fa-regular fa-copy"></i> Copy</button>
+                <button class="btn-action" onclick="downloadConfig()"><i class="fa-solid fa-download"></i> Download</button>
+              </div>
+            </div>
+            <pre><code id="config-code-block">! Please choose a hardware node to load terminal parameters...</code></pre>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="../../java/search.js"></script>
+<script src="../../java/menu.js"></script>
+<script src="../../java/labs/app.js"></script>
+</body>
+</html>
