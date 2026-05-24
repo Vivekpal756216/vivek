@@ -11,17 +11,19 @@ body {
   min-height: 100vh;
   font-family: 'Fira Code', monospace;
   color: #abb2bf;
-  overflow: hidden;
+  overflow-y: auto;   /* ✅ FIX: hidden tha, ab auto */
+  overflow-x: hidden;
 }
 
 .dashboard-container {
   display: flex;
   width: 100vw;
-  height: calc(100vh - 80px); 
+  height: auto;        /* ✅ FIX: 100vh tha — ab auto so page scroll kare */
+  min-height: calc(100vh - 80px);
   margin-top: 80px; 
 }
 
-/* SIDEBAR: CLEAN PROJECTS ONLY */
+/* SIDEBAR */
 .sidebar-panel {
   width: 320px;
   min-width: 320px;
@@ -31,7 +33,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 100%;
+  height: auto;        /* ✅ FIX: 100% height hata — content ke saath badhega */
+  min-height: 100%;
 }
 
 .sidebar-header h2 {
@@ -68,21 +71,21 @@ body {
   transform: translateX(4px);
 }
 
-/* MAIN CONTENT BLOCK - CENTER ALIGNED ENGINE */
+/* MAIN CONTENT */
 .main-content {
   flex-grow: 1;
   padding: 30px;
-  overflow-y: auto;
+  overflow-y: auto;    /* ✅ scroll allow */
   background: #0b0d12;
-  height: 100%;
+  height: auto;
   display: flex;
-  justify-content: center; /* Horizontally Centers the 3D Box */
+  justify-content: center;
   align-items: flex-start;
 }
 
 .box-3d {
   width: 100%;
-  max-width: 900px; /* Reduced width for a cleaner compact centered look */
+  max-width: 900px;
   background: #1c1e24; 
   border-radius: 26px; 
   border: 1px solid #252932;
@@ -90,7 +93,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  align-items: center; /* Center aligns contents inside the box layout */
+  align-items: center;
 }
 
 .box-img-wrapper { 
@@ -112,13 +115,13 @@ body {
 .box-body { 
   padding: 15px 24px; 
   width: 100%;
-  text-align: center; /* Centers titles and descriptions */
+  text-align: center;
 }
 
 .project-main-title { color: #ffffff; font-size: 18px; }
 .project-main-desc { color: #5c6370; font-size: 13px; margin-top: 4px; }
 
-/* PANELS ARCHITECTURE */
+/* PANELS */
 .hidden-panel { display: none !important; }
 
 .center-content-panel {
@@ -139,11 +142,11 @@ body {
 
 .view-title { color: #e5c07b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; text-align: center; }
 
-/* HORIZONTAL TASK SELECTOR GRID */
+/* TASK GRID */
 .task-grid-selector {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centers task buttons grid */
+  justify-content: center;
   gap: 8px;
   max-height: 150px;
   overflow-y: auto;
@@ -175,18 +178,18 @@ body {
 .task-display-box h5 { font-size: 13px; color: #ffffff; margin-bottom: 6px; }
 .neon-text-alert { color: #98c379; font-size: 13px; line-height: 1.6; }
 
-/* SCREENSHOT FRAME DESIGN */
-.screenshot-container { margin-top: 10px; width: 100%; text-align: center;}
+/* SCREENSHOT */
+.screenshot-container { margin-top: 10px; width: 100%; text-align: center; }
 .screenshot-frame { width: 100%; background: #11131a; padding: 10px; border-radius: 14px; border: 1px solid #232733; display: flex; justify-content: center; }
 .screenshot-frame img { width: 100%; max-width: 800px; height: auto; border-radius: 10px; display: block; border: 1px solid #1c1e24; }
 
-/* CONFIGURATION SCREEN ELEMENTS */
+/* CONFIG */
 .config-inner-layout { padding: 24px; background: #14161f; border-top: 1px solid #252932; display: flex; flex-direction: column; gap: 20px; width: 100%; }
 .device-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-height: 150px; overflow-y: auto; padding: 5px; }
 .chip { padding: 6px 14px; background: #232733; border: 1px solid #2c3140; border-radius: 8px; font-size: 11px; color: #abb2bf; cursor: pointer; }
 .chip:hover, .chip.active { background: #2c3140; border-color: #8338ec; color: #8338ec; box-shadow: 0 0 8px rgba(131, 56, 236, 0.2); }
 
-/* TERMINAL SCREEN ENGINE */
+/* TERMINAL */
 .terminal-screen { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .config-header { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #8a93a5; }
 .action-buttons { display: flex; gap: 8px; }
@@ -195,13 +198,13 @@ body {
 .terminal-screen pre { background: #11131a; padding: 18px; border-radius: 14px; overflow-x: auto; border: 1px solid #1e212b; }
 .terminal-screen code { font-size: 13px; line-height: 1.6; color: #abb2bf; }
 
-/* FOOTER NEON TABS BUTTONS BAR */
+/* FOOTER BUTTONS */
 .box-footer-buttons { display: flex; border-top: 1px solid #252932; background: #16181f; padding: 12px 24px; gap: 15px; width: 100%; }
 .tab-btn { flex: 1; padding: 14px; background: #1c1e24; border: 1px solid #282c37; color: #6c7385; font-family: inherit; font-size: 13px; font-weight: 500; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; text-align: center; }
 .btn-neon-blue:hover, .btn-neon-blue.panel-active { color: #00f5ff; border-color: #00f5ff; background: rgba(0, 245, 255, 0.04); box-shadow: 0 0 12px rgba(0, 245, 255, 0.25); }
 .btn-neon-purple:hover, .btn-neon-purple.panel-active { color: #8338ec; border-color: #8338ec; background: rgba(131, 56, 236, 0.04); box-shadow: 0 0 12px rgba(131, 56, 236, 0.25); }
 
-/* RESPONSIVE SYSTEM */
+/* RESPONSIVE */
 @media (max-width: 950px) {
   .dashboard-container { flex-direction: column; height: auto; overflow-y: auto; }
   .sidebar-panel { width: 100%; min-width: 100%; height: auto; border-right: none; border-bottom: 1px solid #1e212b; }
@@ -210,4 +213,4 @@ body {
 @media (max-width: 600px) {
   .dashboard-container { margin-top: 140px; }
   .box-footer-buttons { flex-direction: column; gap: 10px; }
-}2
+}
